@@ -6,10 +6,10 @@ Esse projeto tem como intenção o desenvolvimento dessa aplicação focando na 
 
 NOME | PROFISSÃO E IDADE | MOTIVAÇÕES | FRUSTRAÇÕES | HOBBIES, HISTÓRIA| APLICATIVOS, SITES |
 |----|----|----|----|----|----|
-Carlos Henrique | - Estudante <br /> - 16 anos | Está buscando uma plataforma que forneça jogos grátis. | Está tentando conseguir uma oportunidade de menor aprendiz faz algum tempo e não obteve sucesso. | - Gosta de jogar videogame <br /> - Viajar <br /> - Não consegue comprar jogos com frequência | - Instagram <br /> - Twitter <br /> - Facebook <br /> - Twitch |
-Rogério Guimarães | - Gerente de loja de calçados <br /> - 32 anos | Está buscando uma plataforma que forneça jogos grátis <br/> - Gostaria de uma ferramenta que possa organizar e encontrar seu jogos facilmente. | Tem dificuldades de catalogar e organizar seus jogos. <br /> -  Está ficando sem espaço físico para guardar sua coleção. | - Coleciona jogos antigos <br /> - Seu video game preferido é o Nintendo 64 <br /> - Adora andar de bicicleta | - Instagram <br /> - LinkedIn <br /> - Facebook |
-Elaine Resende | - Desenvolvedora de jogos <br /> - 27 anos | Busca uma plataforma para disponibilizar seus jogos. <br/> - Está disposta a fornecer chaves gratuitas desses jogos para divulgação. | A pouca quantidade de mulheres no cenário competitivo de jogos. | - Seu primeiro contato com jogos foi aos 4 anos de idade. <br /> - Já foi jogadora profissional de League of Legends. | - Facebook <br /> - LinkedIn <br /> - Twitch|
-Fernanda Souza | - Corretora de imóveis <br /> - 38 anos | Buscando uma plataforma que recomende jogos de acordo com o seu perfil. | - Tentou jogar alguns jogos,  porém eles eram difíceis.<br/> - Não gostou de jogos online, pois os outros jogadores foram desrespeitosos. | - Começou a jogar em 2020. <br /> - Seu jogo preferido é Among Us. <br/> Joga vôlei aos fins de semana. | - Facebook <br /> - LinkedIn <br /> - Twitter |
+Carlos Henrique | - Estudante <br /> - 16 anos | - Está buscando uma plataforma que forneça jogos grátis. | - Está tentando conseguir uma oportunidade de menor aprendiz faz algum tempo e não obteve sucesso. | - Gosta de jogar videogame <br /> - Viajar <br /> - Não consegue comprar jogos com frequência | - Instagram <br /> - Twitter <br /> - Facebook <br /> - Twitch |
+Rogério Guimarães | - Gerente de loja de calçados <br /> - 32 anos | - Quer colecionar jogos na versão digital <br/> - Gostaria de uma ferramenta que possa organizar e encontrar seu jogos facilmente. | - Tem dificuldades de catalogar e organizar seus jogos. <br /> -  Está ficando sem espaço físico para guardar sua coleção. | - Coleciona jogos antigos <br /> - Seu video game preferido é o Nintendo 64 <br /> - Adora andar de bicicleta | - Instagram <br /> - LinkedIn <br /> - Facebook |
+Elaine Resende | - Desenvolvedora de jogos <br /> - 27 anos | - Busca uma plataforma para disponibilizar seus jogos. <br/> - Está disposta a fornecer chaves gratuitas desses jogos para divulgação. | - A pouca quantidade de mulheres no cenário competitivo de jogos. | - Seu primeiro contato com jogos foi aos 4 anos de idade. <br /> - Já foi jogadora profissional de League of Legends. | - Facebook <br /> - LinkedIn <br /> - Twitch|
+Fernanda Souza | - Corretora de imóveis <br /> - 38 anos | - Busca uma plataforma que forneça diferentes jogos para descobrir o seu estilo preferido. | - Tentou jogar alguns jogos,  porém eles eram difíceis.<br/> - Não gostou de jogos online, pois os outros jogadores foram desrespeitosos. | - Começou a jogar em 2020. <br /> - Seu jogo preferido é Among Us. <br/> - Joga vôlei aos fins de semana. | - Facebook <br /> - LinkedIn <br /> - Twitter |
 
 ## Histórias de Usuários
 
@@ -62,30 +62,24 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
-|RF-001| Permitir que o usuário cadastre tarefas | ALTA | 
-|RF-002| Emitir um relatório de tarefas no mês   | MÉDIA |
+|RF-001| Um resgate deve ser vinculado com um usuário e armazenado em uma tabela especifica para auditoria |  BAIXA | 
+|RF-002| Ao resgatar um jogo com sucesso, ele receberá um e-mail informando do resgate |  ALTA | 
+|RF-003| Desenvolvedores de jogos poderão cadastrar seus jogos |  MÈDIA | 
+|RF-004|  A aplicação deve permitir operações de CRUD de  jogos |  ALTA | 
+|RF-005|  O usuário deve se cadastrar ou fazer login no site para acessar | ALTA | 
+|RF-006|  Durante um tempo limitado, o usuário pode resgatar os jogos oferecidos apenas uma vez e se não possuir o jogo  | MÉDIA |
+
 
 ### Requisitos não Funcionais
 
 |ID     | Descrição do Requisito  |Prioridade |
 |-------|-------------------------|----|
-|RNF-001| O sistema deve ser responsivo para rodar em um dispositivos móvel | MÉDIA | 
-|RNF-002| Deve processar requisições do usuário em no máximo 3s |  BAIXA | 
+|RF-001| O sistema deve ser acessado por meio web e mobile | ALTA | 
+|RNF-002| O app deve ser acessível através de sistemas operacionais "Android" e "iOS | ALTA | 
+|RNF-003| A aplicação deve ser desenvolvida usando react para o front-end | ALTA | 
+|RNF-004| A aplicação devem estar disponiveis 24 horas por dia e 07 dias da semana | ALTA | 
+|RNF-005| O sistema deverá ser compatível com os principais navegadores do mercado como (Google Chrome, Firefox, Microsoft Edge)| MÈDIA | 
 
-Com base nas Histórias de Usuário, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
-
-- [Requisitos Funcionais
- (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
- correspondem a uma funcionalidade que deve estar presente na
-  plataforma (ex: cadastro de usuário).
-- [Requisitos Não Funcionais
-  (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
-  correspondem a uma característica técnica, seja de usabilidade,
-  desempenho, confiabilidade, segurança ou outro (ex: suporte a
-  dispositivos iOS e Android).
-Lembre-se que cada requisito deve corresponder à uma e somente uma
-característica alvo da sua solução. Além disso, certifique-se de que
-todos os aspectos capturados nas Histórias de Usuário foram cobertos.
 
 ## Restrições
 
@@ -114,15 +108,7 @@ As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de
 
 A matriz de rastreabilidade é uma ferramenta usada para facilitar a visualização dos relacionamento entre requisitos e outros artefatos ou objetos, permitindo a rastreabilidade entre os requisitos e os objetivos de negócio. 
 
-A matriz deve contemplar todos os elementos relevantes que fazem parte do sistema, conforme a figura meramente ilustrativa apresentada a seguir.
-
 ![Exemplo de matriz de rastreabilidade](img/02-matriz-rastreabilidade.png)
-
-> **Links Úteis**:
-> - [Artigo Engenharia de Software 13 - Rastreabilidade](https://www.devmedia.com.br/artigo-engenharia-de-software-13-rastreabilidade/12822/)
-> - [Verificação da rastreabilidade de requisitos usando a integração do IBM Rational RequisitePro e do IBM ClearQuest Test Manager](https://developer.ibm.com/br/tutorials/requirementstraceabilityverificationusingrrpandcctm/)
-> - [IBM Engineering Lifecycle Optimization – Publishing](https://www.ibm.com/br-pt/products/engineering-lifecycle-optimization/publishing/)
-
 
 # Gerenciamento de Projeto
 
