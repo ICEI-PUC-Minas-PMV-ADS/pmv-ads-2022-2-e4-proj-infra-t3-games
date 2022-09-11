@@ -27,23 +27,41 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 
 ### Análise da Situação Atual
 
-Apresente aqui os problemas existentes que viabilizam sua proposta. Apresente o modelo do sistema como ele funciona hoje. Caso sua proposta seja inovadora e não existam processos claramente definidos, apresente como as tarefas que o seu sistema pretende implementar são executadas atualmente, mesmo que não se utilize tecnologia computacional. 
+O problema que se busca solucionar ao desenvolver este sistema é o tempo gasto para localizar e adquirir jogos, que correspondam ao perfil do usuário. Para isso será desenvolvido um sistema que atenda a necessidade do usuário que irá adquirir os jogos e também disponibilizar espaço para desenvolvedores de games que queiram cadastrar seus produtos. 
+
+O usuário entrará no site e aplicativo mobile, então fará o seu cadastro e login, depois ele será redirecionado para página de seleção de jogos onde poderá durante um tempo limitado resgatar os jogos oferecidos apenas uma vez, e obrigatoriamente o resgate deve ser vinculado com um usuário. Após resgatar o jogo ele receberá no seu e-mail informação do resgate. 
+
+O processo que o desenvolvedor de jogos deverá seguir é, primeiro, cadastrar e fazer login, depois cadastrar o jogo que deseja disponibilizar, vizualizar o jogo na biblioteca,  podendo fazer uma operação de CRUD dos jogos. 
 
 ### Descrição Geral da Proposta
+ 
+A proposta que estamos apresentando é a criação de uma aplicação web e mobile que irá suprir as necessidades tanto do desenvolvedor de jogos, quanto dos consumidores de jogos. Sendo que os desenvolvedores poderão expor seu trabalho e os consumidores conseguirão acessar informações de forma rápida .
 
-Apresente aqui uma descrição da sua proposta abordando seus limites e suas ligações com as estratégias e objetivos do negócio. Apresente aqui as oportunidades de melhorias.
+### Processo 1 – USÚARIO QUE DESEJA ADIQUIRIR GAMERS ACESSA O SITE
 
-### Processo 1 – NOME DO PROCESSO
-
-Apresente aqui o nome e as oportunidades de melhorias para o processo 1. Em seguida, apresente o modelo do processo 1, descrito no padrão BPMN. 
+Uma melhoria para o sistema seria a criação de um local onde todos os usuários pudessem deixar suas sugestões. 
 
 ![Processo 1](img/02-bpmn-proc1.png)
 
-### Processo 2 – NOME DO PROCESSO
+### Processo 2 – DESENVOLVEDOR CADASTRA JOGOS
 
-Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em seguida, apresente o modelo do processo 2, descrito no padrão BPMN.
+Uma melhoria possível seria enviar e-mail para todos os usuários quando um novo jogo for cadastrado. 
 
 ![Processo 2](img/02-bpmn-proc2.png)
+
+### Processo 3 – DESENVOLVEDOR EXCLUI JOGOS
+
+Uma melhoria possível seria ter a possibilidade de reativar um jogo excluído dentro do período de 30 dias. 
+
+![Processo 2](img/02-bpmn-proc3.png)
+
+
+### Processo 4 – DESENVOLVEDOR ATUALIZA JOGOS 
+
+Uma melhoria possível seria a criação de controle de quantos usuários tiveram interesse no jogo especifico de cada desenvolvedor entregando assim informações de satisfação do usuário sobre seus jogos. 
+
+![Processo 2](img/02-bpmn-proc4.png)
+
 
 ## Indicadores de Desempenho
 
