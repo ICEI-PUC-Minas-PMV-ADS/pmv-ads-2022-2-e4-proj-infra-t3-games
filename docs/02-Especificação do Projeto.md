@@ -65,11 +65,15 @@ Uma melhoria possível seria a criação de controle de quantos usuários tivera
 
 ## Indicadores de Desempenho
 
-Apresente aqui os principais indicadores de desempenho e algumas metas para o processo. Atenção: as informações necessárias para gerar os indicadores devem estar contempladas no diagrama de classe. Colocar no mínimo 5 indicadores. 
 
-Usar o seguinte modelo: 
+| Indicador                     	| Objetivos                                               	| Descrição                                     	| Cálculo 	| Fonte  Dados                                    	| Perspectiva      	|   	|
+|-------------------------------	|---------------------------------------------------------	|-----------------------------------------------	|---------	|--------------------------------------------------	|------------------	|---	|
+| Taxa de jogos  resgatados     	| Avaliar o sucesso de resgate de jogos da plataforma     	| Mede % de jogos   resgatados durante um mês   	|         	| Tabela resgate, microserviço de resgate de jogos 	| Processos interno 	|   	|
+| Taxa de jogos  cadastrados    	| Avaliar a adoção dos desenvolvedores a plataforma       	| Mede % de jogos   cadastrados durante um mês  	|         	| Tabela jogos, microserviço  de jogos             	| Processos interno 	|   	|
+| Taxa de jogos  excluidos      	| Avaliar número de jogos que estão deixando a plataforma 	| Mede % de jogos   excluidos durante um mês    	|         	| Tabela jogos, microserviço  de jogos             	| Processos interno 	|   	|
+| Taxa de vizualização de jogos 	| Avaliar o interesse nos jogos da plataforma             	| Mede % de jogos   vizualizados durante um mês 	|         	| Tabela jogos, microserviço  de jogos             	| Processos interno 	|   	|
+| Taxa de e-mail enviados       	| Avaliar o número de e-mail enviados                     	| Mede % de e-mail enviados durante um mês      	| *100    	| Tabela email, microserviço de emal               	| Processos interno 	|   	|
 
-![Indicadores de Desempenho](img/02-indic-desemp.png)
 Obs.: todas as informações para gerar os indicadores devem estar no diagrama de classe a ser apresentado a posteriori. 
 
 ## Requisitos
