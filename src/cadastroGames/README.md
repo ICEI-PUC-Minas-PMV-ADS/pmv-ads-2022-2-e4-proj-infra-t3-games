@@ -24,4 +24,4 @@ cadastro-games-getGameById | handlers/getGameById.handler
 cadastro-games-updateGame | handlers/updateGame.handler
 cadastro-games-deleteGame | handlers/deleteGame.handler
 
-As funções lambda devem possuir no mínimo 256mb de memória para funcionarem
+As funções lambda devem possuir um tempo limite de pelo menos 10 segundos caso seja utilizado 128mb de memória, caso contrário será gerada uma resposta de internal server error
