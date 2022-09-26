@@ -14,7 +14,7 @@ export DATABASE_URL="mongodb+srv://user:password@cluster0.h1zou5l.mongodb.net/te
 
 Será gerado um arquivo com o nome cadastro-games.zip dentro da pasta .serverless
 
-Esse arquivo deve ser utilizado para criar as funçoes lambda na AWS
+Esse arquivo deve ser utilizado para criar as funções lambda na AWS
 
 Nome da função lambda | Manipulador|
 ---------------|-----------
