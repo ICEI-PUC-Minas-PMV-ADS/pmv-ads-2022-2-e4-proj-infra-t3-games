@@ -2,7 +2,7 @@
 
 1- Abrir o terminal e rodar o seguinte comando:
 
--   npm install
+-  yarn
 
 2- Colocar a url do banco de dados no arquivo .env, conforme exemplo abaixo:
 
