@@ -133,11 +133,17 @@ A matriz de rastreabilidade é uma ferramenta usada para facilitar a visualizaç
 
 Sobre o modelo de dados NoSQL que utilizaremos no nosso projeto, esclarecemos que  acabamos por escolher o Mongo DB que é um um banco de dados orientado a documentos.
 Isto porque, o MongoDB, que pertence à classificação de banco orientado a documento, é o que vem tendo uma maior adoção pela comunidade NoSQL.  O  desenvolvimento do respectivo sistema de banco de dados foi realizado tendo seu código escrito em C++, o que possibilita o entendimento e grande alcance da linguagem entre os programadores.<br />
+
 Não obstante, o respectivo sistema provê o armazenamento dos documentos no formato JSON, assim como na maioria dos bancos de dados NoSQL, já que tem uma arquitetura schemaless, assim não sendo necessários se preocupar com a definição de schema, como tipo de dados, nome de colunas ou relacionamento entre as tabelas, conferindo assim grande flexibildiade para utilização e boa curva de aprendizagem percebida entre os integrantes do nosso grupo.<br />
+
 Outra grande facilidade é que O MongoDB apesar de não oferecer  suporte a instruções SQL, possibilita suporte a consultas a documentos usando uma linguagem específica para pesquisa que é quase tão poderoso quanto o SQL. Suas consultas, além de poderosas, são facilmente convertidas às tradicionais SQL, fazendo com que a transição de um banco relacional para o MongoDB seja melhor assimilada.<br />
+
 Os bancos de dados orientados a documentos como o Mongo são bem diferentes dos tradicionais, onde o armazenamento é feito em um conjunto definido de colunas. Em vez disso, os dados são armazenados em documentos previamente definidos, tendo como características o armazenamento de estruturas autocontidas e auto descritivas. Outro ponto que justifica pela escolha é que é que as coleções não possuem um relacionamento explícito entre outras coleções, ferindo os princípios da normalização.<br />
+
 Prosseguindo com a justificativa pelo uso deste sistema é que bancos de dados orientados a documentos incentivam a redundância de dados, evitando a criação de tabelas relacionais para armazenar dados que serão reutilizados, como uma tabela de tags na modelagem de uma estrutura para armazenar posts. Ao invés de se criar uma tabela de tags que terá seu id relacionado com os posts, essas tags são colocadas diretamente na coleção do post, realizando agregações de dados em uma única estrutura.<br />
+
 Os bancos orientados a documentos, diferente dos tradicionais que são compostos por uma estrutura contendo tabela, linha e coluna, são representados por estruturas definidas como coleção-documento, na qual uma coleção pode ser a representação de uma tabela e é nela que ocorre o armazenamento dos documentos. Em uma mesma coleção pode existir documentos com diferentes representações. Ao contrário das tecnologias relacionais que possuem uma visão horizontal da tabela, pode-se dizer que a visão do banco de dados orientado a documentos é vertical, conforme pode ser observado na figura abaixo:<br />
+
 
 
 # Gerenciamento de Projeto
