@@ -144,7 +144,7 @@ Prosseguindo com a justificativa pelo uso deste sistema é que bancos de dados o
 
 Os bancos orientados a documentos, diferente dos tradicionais que são compostos por uma estrutura contendo tabela, linha e coluna, são representados por estruturas definidas como coleção-documento, na qual uma coleção pode ser a representação de uma tabela e é nela que ocorre o armazenamento dos documentos. Em uma mesma coleção pode existir documentos com diferentes representações. Ao contrário das tecnologias relacionais que possuem uma visão horizontal da tabela, pode-se dizer que a visão do banco de dados orientado a documentos é vertical, conforme pode ser observado na figura abaixo:<br />
 
-![Processo 2](img/02-bpmn-proc2.png)
+![Processo 2](img/dbjogos.jpg)
 
 
 
