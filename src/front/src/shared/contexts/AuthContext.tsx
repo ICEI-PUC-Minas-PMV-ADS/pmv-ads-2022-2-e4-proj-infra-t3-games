@@ -1,5 +1,5 @@
-import { createContext, useCallback, useContext, useMemo } from "react";
-import { TokenName } from "../../ENV";
+import { createContext, useCallback, useContext, useMemo } from 'react';
+import { TokenName } from '../../ENV';
 
 interface IAuthContextData {
     logout: () => void;
@@ -10,8 +10,7 @@ const AuthContext = createContext({} as IAuthContextData);
 interface IAuthProviderProps {
     children: React.ReactNode;
 }
-export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
-
+export const AuthProvider = ({ children }: IAuthProviderProps) => {
     const handleLogout = useCallback(() => {
         localStorage.removeItem(TokenName);
     }, []);
@@ -23,6 +22,6 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
             {children}
         </AuthContext.Provider>
     );
-}
+};
 
 export const useAuthContext = () => useContext(AuthContext);
