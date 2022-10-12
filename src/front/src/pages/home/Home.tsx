@@ -15,7 +15,6 @@ export const Home = () => {
             { isAuthenticated ? <button onClick={handleLogout}> logout </button>  
              : <Link to='/signin'> signin </Link> }
              <div></div>
-             <Link to='/users'>usuários protegidos</Link>
         </div>
     );
 }
