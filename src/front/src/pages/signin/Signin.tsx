@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import {
     Box,
     Button,
@@ -54,13 +54,7 @@ export const Signin = () => {
     }, [email, password, navigate]);
 
     return (
-        <Box
-            width='100vw'
-            height='100vh'
-            display='flex'
-            alignItems='center'
-            justifyContent='center'
-        >
+        <Box width='100%' height='100%' display='flex' alignItems='center' justifyContent='center'>
             <Card>
                 <CardContent>
                     <Box display='flex' flexDirection='column' gap={2} width={350}>
