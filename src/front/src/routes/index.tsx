@@ -9,7 +9,6 @@ export const AppRoutes = () => {
                 <Route path='/signin' element={<Signin />} />
                 <Route path='/register' element={<RegisterUser />} />
                 <Route path='/confirm-code' element={<ConfirmCode />} />
-
                 <Route path='*' element={<Navigate to='/homepage' />} />
             </Routes>
         </BrowserRouter>

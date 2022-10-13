@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuthContext } from '../../shared/contexts/AuthContext';
+import { useAuthContext } from '../../contexts/AuthContext';
 
 export const Home = () => {
     const { isAuthenticated, logout } = useAuthContext();

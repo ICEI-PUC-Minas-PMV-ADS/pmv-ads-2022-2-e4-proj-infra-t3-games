@@ -1,5 +1,5 @@
 import { AppRoutes } from './routes';
-import { AuthProvider } from './shared/contexts/AuthContext';
+import { AuthProvider } from './contexts/AuthContext';
 
 export const App = () => {
     return (

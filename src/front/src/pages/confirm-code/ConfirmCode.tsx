@@ -34,8 +34,7 @@ export const ConfirmCode = () => {
                 <CardContent>
                     <Box display='flex' flexDirection='column' gap={2} width={350}>
                         <Typography variant='h6' align='center'>
-                            {' '}
-                            Código de Verificação{' '}
+                            Código de Verificação
                         </Typography>
 
                         <TextField
