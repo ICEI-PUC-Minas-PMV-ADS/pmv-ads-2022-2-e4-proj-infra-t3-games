@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useMemo } from 'react';
-import { TokenName } from '../../ENV';
+import { TokenName } from '../ENV';
 
 interface IAuthContextData {
     logout: () => void;
