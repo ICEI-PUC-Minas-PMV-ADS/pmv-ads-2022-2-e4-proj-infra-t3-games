@@ -1,0 +1,47 @@
+service: cadastro-games
+plugins:
+    - serverless-dotenv-plugin
+
+provider:
+    name: aws
+    region: us-east-1
+    runtime: nodejs16.x
+
+functions:
+    createJogo:
+        handler: handlers/createGame.handler
+        events:
+            - http:
+                  method: POST
+                  path: /games
+    getJogos:
+        handler: handlers/getGames.handler
+        events:
+            - http:
+                  method: GET
+                  path: /games
+    getJogoById:
+        handler: handlers/getGameById.handler
+        events:
+            - http:
+                  method: GET
+                  path: /games/{game_id}
+    updateJogo:
+        handler: handlers/updateGame.handler
+        events:
+            - http:
+                  method: PUT
+                  path: /games/{game_id}
+    deleteJogo:
+        handler: handlers/deleteDame.handler
+        events:
+            - http:
+                  method: DELETE
+                  path: /games/{game_id}
+
+package:
+    patterns:
+        - '!node_modules/.prisma/client/libquery_engine-*'
+        - 'node_modules/.prisma/client/libquery_engine-rhel-*'
+        - '!node_modules/prisma/libquery_engine-*'
+        - '!node_modules/@prisma/engines/**'
