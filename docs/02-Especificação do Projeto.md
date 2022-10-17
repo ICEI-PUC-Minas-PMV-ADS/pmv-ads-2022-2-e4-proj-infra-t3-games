@@ -124,10 +124,26 @@ A matriz de rastreabilidade é uma ferramenta usada para facilitar a visualizaç
 ![Exemplo de matriz de rastreabilidade](img/02-matriz-rastreabilidade.png)
 
 # Documentação da arquitetura da aplicação distribuída
+ 
+![Arquitetura](img/ArquiteruraProjeto.png)
 
 # Projeto da arquitetura baseada em API
 
+![Arquitetura](img/ArquiteruraProjeto.png)
+
 # Implementação da API e testes de unidade
+
+Cypress é uma ferramenta que te permite escrever testes tanto de front-end quanto de Back-end, foi desenvolvida para a web moderna. Muito usada por desenvolvedores e engenheiros de quality assurance que criam aplicativos web utilizando estruturas JavaScript modernas.
+
+Cypress é um framework gratuito, de código aberto, instalado localmente e também te oferece um Dashboard para acompanhar seus testes.
+
+Decidimos através do framework Cypress, deve seguir as seguintes etapas.
+
+|Objetivo|Pessoas|Tarefa|
+|--------|--------------|-------------|
+|Verificar se o usuário consegue se cadastrar  no sistema **(TESTE)**|Desenvolvimento| Neste teste vamos usar o método POST, vamos inserir um novo jogo e um usuario. E neste teste vamos passar alguns parâmetros no corpo da requisição e iremos esperar o status 201, que significa que a requisição foi bem sucedida e o novo recurso foi criado (validar informações que são obrigatórias para o cadastro) e clicar em Salvar.|
+|Verificar os dados de usuarios e jogos que foram cadastrado na API **(TESTE)** |Desenvolvimento|Neste segundo cenário vamos usar o método GET para listar todas as bebidas que temos, e aguardar o status 200, que significa que a requisição foi bem sucedida.|
+|Validar o caso de deletar dados cadastrados **(TESTE)**|Desenvolvimento| Neste teste vamos usar o método DELETE, vamos deletar jogo ou usuario existente. E neste teste vamos passar alguns parâmetros no corpo da requisição e iremos esperar o status 201.|
 
 # Documentação com justificativa e avaliação do modelo de dados NoSQL para o contexto da aplicação
 
