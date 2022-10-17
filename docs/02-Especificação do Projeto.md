@@ -129,7 +129,9 @@ A matriz de rastreabilidade é uma ferramenta usada para facilitar a visualizaç
 
 # Projeto da arquitetura baseada em API
 
-![Arquitetura](img/ArquiteruraProjeto.png)
+A Documentação da APÌ  pode ser visualizada no link abaixo, publicada pelo Postman. 
+
+https://documenter.getpostman.com/view/21114669/2s847CwF5v
 
 # Implementação da API e testes de unidade
 
