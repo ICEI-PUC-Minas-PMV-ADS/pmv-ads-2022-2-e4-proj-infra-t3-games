@@ -1,10 +1,11 @@
-require('dotenv').config()
 
+const AWS = require('aws-sdk')
+const Lambda = new AWS.Lambda()
 const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
 let conn = null;
 
-const ResgateSchema = require('./models/ResgateSchema')
+const ResgateSchema = require('./ResgateSchema')
 
 const MOGO_URI = process.env.MOGO_URI
 
@@ -37,10 +38,17 @@ exports.handler = async function(event, context) {
     codigo_resgate: uuidv4(),
     email_enviado: false
   }
+  
 
   const M = conn.model('Resgate');
 
   const doc = await M.create(meuResgate);
 
+ const req = {
+    FunctionName: "envio_email",
+    Payload: JSON.stringify(meuResgate)
+  }
+  await Lambda.invoke(req).promise()
+  
   return doc;
 };
