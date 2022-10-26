@@ -237,7 +237,3 @@ Contribuições são o que fazem a comunidade open source um lugar incrível par
 Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
 
 <!-- CONTACT -->
-
-## Contato
-
-Rocketseat - [Github](https://github.com/rocketseat) - **oi@rocketseat.com.br**
