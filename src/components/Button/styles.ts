@@ -10,6 +10,7 @@ const StyledButton = styled.button`
     border-radius: 20px;
     border: 1px solid #000000;
     cursor: pointer;
+    align-self: center;
 
     :hover {
         filter: brightness(0.9);
