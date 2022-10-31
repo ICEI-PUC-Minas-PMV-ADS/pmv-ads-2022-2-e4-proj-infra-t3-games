@@ -4,6 +4,7 @@ import Input from '../../components/Input';
 import Title from '../../components/Title';
 import { CadastroWrapper, Form } from './style';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 interface FormData {
@@ -15,19 +16,30 @@ interface FormData {
 const schema = yup.object({
     email: yup
         .string()
-        .required('Digite seu e-mail.')
+        .required('Digite seu e-mail')
         .matches(
             /^[a-z0-9._-]+(?:\.[a-z0-9._-]+)*@(?:[a-z0-9](?:[a-z-]*[a-z])?.)+[a-z](?:[a-z]*[a-z]){1,}?$/,
             'Email inválido',
         ),
+    password: yup.string().required('Digite uma senha'),
+    confirm: yup
+        .string()
+        .required('Digite uma senha')
+        .oneOf([yup.ref('password'), null], 'As senhas devem ser iguais'),
 });
 
 const Cadastro = () => {
-    const { register, getValues } = useForm<FormData>();
+    const { register, getValues, handleSubmit } = useForm<FormData>({
+        resolver: yupResolver(schema),
+    });
+
+    const onSubmit = (data: object) => {
+        console.log(data);
+    };
     return (
         <CadastroWrapper>
             <Title>Cadastre-se</Title>
-            <Form>
+            <Form onSubmit={handleSubmit(onSubmit)}>
                 <Input placeholder='E-mail' type='email' {...register('email')} />
                 <Input placeholder='Senha' type='password' {...register('password')} />
                 <Input
@@ -35,7 +47,7 @@ const Cadastro = () => {
                     type='password'
                     {...register('confirm')}
                 />
-                <Button>Cadastrar</Button>
+                <Button type='submit'>Cadastrar</Button>
             </Form>
             <FooterBanner />
         </CadastroWrapper>
