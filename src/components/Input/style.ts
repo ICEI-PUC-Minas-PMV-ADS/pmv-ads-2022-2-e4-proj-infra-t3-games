@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 
-const StyledInput = styled.input`
+export const StyledDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+`;
+
+export const StyledInput = styled.input`
     width: 100%;
     height: 75px;
     padding: 0 20px;
@@ -16,6 +22,16 @@ const StyledInput = styled.input`
     ::placeholder {
         color: #d9d9d9;
     }
+
+    :-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 60px #565258 inset;
+        -webkit-text-fill-color: #d9d9d9 !important;
+    }
 `;
 
-export default StyledInput;
+export const ErrorMessage = styled.span`
+    text-align: center;
+    color: #d00c23;
+    font-family: 'Inter';
+    font-size: 18px;
+`;

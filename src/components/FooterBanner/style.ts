@@ -39,6 +39,15 @@ export const FooterButton = styled.button`
     text-transform: uppercase;
     background: #ffffff;
     border-radius: 4px;
+    cursor: pointer;
+
+    :hover {
+        filter: brightness(0.9);
+    }
+
+    :active {
+        transform: scale(0.98);
+    }
 `;
 
 export const FooterImage = styled.img`

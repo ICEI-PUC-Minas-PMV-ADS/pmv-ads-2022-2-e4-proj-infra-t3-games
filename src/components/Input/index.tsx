@@ -1,10 +1,16 @@
 import { ComponentPropsWithoutRef, forwardRef } from 'react';
-import StyledInput from './style';
+import { StyledDiv, StyledInput, ErrorMessage } from './style';
 
-const Input = forwardRef<HTMLInputElement, ComponentPropsWithoutRef<'input'>>(function Input(
-    { ...props },
-    ref,
-) {
-    return <StyledInput {...props} ref={ref} />;
+type InputProps = {
+    error?: string;
+} & ComponentPropsWithoutRef<'input'>;
+
+const Input = forwardRef<HTMLInputElement, InputProps>(function Input({ error, ...props }, ref) {
+    return (
+        <StyledDiv>
+            <StyledInput {...props} ref={ref} />
+            <ErrorMessage>{error}</ErrorMessage>
+        </StyledDiv>
+    );
 });
 export default Input;
