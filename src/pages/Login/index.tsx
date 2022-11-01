@@ -17,10 +17,10 @@ const schema = yup.object({
         .string()
         .required('Digite seu e-mail')
         .matches(
-            /^[a-z0-9._-]+(?:\.[a-z0-9._-]+)*@(?:[a-z0-9](?:[a-z-]*[a-z])?.)+[a-z](?:[a-z]*[a-z]){1,}?$/,
+            /^[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
             'Email inválido',
         ),
-    password: yup.string().required('Digite uma senha')
+    password: yup.string().required('Digite uma senha'),
 });
 
 const Login = () => {
@@ -34,16 +34,23 @@ const Login = () => {
 
     const onSubmit = (data: FormData) => {
         const userPool = new CognitoUserPool({
-            UserPoolId: '', 
-            ClientId: ''});
-        const authenticationDetails = new AuthenticationDetails({ Username: data.email, Password: data.password});
+            UserPoolId: '',
+            ClientId: '',
+        });
+        const authenticationDetails = new AuthenticationDetails({
+            Username: data.email,
+            Password: data.password,
+        });
         const userData = { Username: data.email, Pool: userPool };
 
         new CognitoUser(userData).authenticateUser(authenticationDetails, {
             onSuccess: function (result) {
-                localStorage.setItem('access-token', JSON.stringify(result.getIdToken().getJwtToken()));
+                localStorage.setItem(
+                    'access-token',
+                    JSON.stringify(result.getIdToken().getJwtToken()),
+                );
                 //TODO
-                //navegar home-page 
+                //navegar home-page
             },
             onFailure: function (result) {
                 alert(result);

@@ -55,8 +55,8 @@ const Cadastro = () => {
             if (err) {
                 console.error(err);
             }
-            
-            //TODO  
+
+            //TODO
             //navegar para validarcode-page se cadastro for bem-sucedido
 
         });
