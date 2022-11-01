@@ -49,7 +49,7 @@ const Cadastro = () => {
                 return;
             }
             //TODO  
-            //navegar para login-page se cadastro for bem-sucedido
+            //navegar para validarcode-page se cadastro for bem-sucedido
         });
     };
 
