@@ -20,7 +20,7 @@ const schema = yup.object({
             /^[a-z0-9._-]+(?:\.[a-z0-9._-]+)*@(?:[a-z0-9](?:[a-z-]*[a-z])?.)+[a-z](?:[a-z]*[a-z]){1,}?$/,
             'Email inválido',
         ),
-    code: yup.string().required('Digite o código de validação')
+    code: yup.string().required('Digite o código de validação'),
 });
 
 const ValidarCode = () => {
@@ -33,9 +33,10 @@ const ValidarCode = () => {
     });
 
     const onSubmit = (data: FormData) => {
-        const userPool = new CognitoUserPool({ 
-            UserPoolId: '', 
-            ClientId: '' });
+        const userPool = new CognitoUserPool({
+            UserPoolId: '',
+            ClientId: '',
+        });
 
         const userData = { Username: data.email, Pool: userPool };
         new CognitoUser(userData).confirmRegistration(data.code, true, function (err) {
@@ -43,7 +44,7 @@ const ValidarCode = () => {
                 alert(err);
                 return;
             }
-            //TODO 
+            //TODO
             //Navegar pagina de login
         });
     };
@@ -59,12 +60,12 @@ const ValidarCode = () => {
                     error={errors.email?.message}
                 />
                 <Input
-                    placeholder='code'
+                    placeholder='Código'
                     type='string'
                     {...register('code')}
                     error={errors.code?.message}
                 />
-                <Button type='submit'>confirmar</Button>
+                <Button type='submit'>Confirmar</Button>
             </Form>
             <FooterBanner />
         </CadastroWrapper>
