@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { CognitoUserPool } from 'amazon-cognito-identity-js';
+
 interface FormData {
     email: string;
     password: string;
@@ -46,16 +47,18 @@ const Cadastro = () => {
 
     const onSubmit = (data: FormData) => {
         const userPool = new CognitoUserPool({
-            UserPoolId: '',
-            ClientId: '',
+
+            UserPoolId: `${process.env.REACT_APP_USER_POOL_ID}`,
+            ClientId: `${process.env.REACT_APP_CLIENT_ID}`,
         });
         userPool.signUp(data.email, data.password, [], [], function (err) {
             if (err) {
-                alert(err.message || JSON.stringify(err));
-                return;
+                console.error(err);
             }
+
             //TODO
             //navegar para validarcode-page se cadastro for bem-sucedido
+
         });
     };
 
