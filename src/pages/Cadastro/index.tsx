@@ -47,6 +47,7 @@ const Cadastro = () => {
 
     const onSubmit = (data: FormData) => {
         const userPool = new CognitoUserPool({
+
             UserPoolId: `${process.env.REACT_APP_USER_POOL_ID}`,
             ClientId: `${process.env.REACT_APP_CLIENT_ID}`,
         });
@@ -54,6 +55,10 @@ const Cadastro = () => {
             if (err) {
                 console.error(err);
             }
+            
+            //TODO  
+            //navegar para validarcode-page se cadastro for bem-sucedido
+
         });
     };
 
