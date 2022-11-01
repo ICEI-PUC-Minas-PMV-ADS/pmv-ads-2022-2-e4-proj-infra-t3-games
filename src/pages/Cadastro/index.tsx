@@ -18,7 +18,7 @@ const schema = yup.object({
         .string()
         .required('Digite seu e-mail')
         .matches(
-            /^[a-z0-9._-]+(?:\.[a-z0-9._-]+)*@(?:[a-z0-9](?:[a-z-]*[a-z])?.)+[a-z](?:[a-z]*[a-z]){1,}?$/,
+            /^[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
             'Email inválido',
         ),
     password: yup.string().required('Digite uma senha'),
@@ -48,7 +48,7 @@ const Cadastro = () => {
                 alert(err.message || JSON.stringify(err));
                 return;
             }
-            //TODO  
+            //TODO
             //navegar para validarcode-page se cadastro for bem-sucedido
         });
     };
