@@ -6,6 +6,8 @@ import { CadastroWrapper, Form } from './style';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { CognitoUserPool } from 'amazon-cognito-identity-js';
+
 interface FormData {
     email: string;
     password: string;
@@ -17,10 +19,16 @@ const schema = yup.object({
         .string()
         .required('Digite seu e-mail')
         .matches(
-            /^[a-z0-9._-]+(?:\.[a-z0-9._-]+)*@(?:[a-z0-9](?:[a-z-]*[a-z])?.)+[a-z](?:[a-z]*[a-z]){1,}?$/,
+            /^[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
             'Email inválido',
         ),
-    password: yup.string().required('Digite uma senha'),
+    password: yup
+        .string()
+        .required('Digite uma senha')
+        .matches(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^])[A-Za-z\d@$!%*?&#^]{8,}$/,
+            'A senha deve ter no mínimo 8 caracteres sendo uma letra maiúscula, uma minúscula, um número e um caractere especial',
+        ),
     confirm: yup
         .string()
         .required('Digite a confirmaçao de senha')
@@ -37,8 +45,16 @@ const Cadastro = () => {
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = (data: object) => {
-        console.log(data);
+    const onSubmit = (data: FormData) => {
+        const userPool = new CognitoUserPool({
+            UserPoolId: `${process.env.REACT_APP_USER_POOL_ID}`,
+            ClientId: `${process.env.REACT_APP_CLIENT_ID}`,
+        });
+        userPool.signUp(data.email, data.password, [], [], function (err) {
+            if (err) {
+                console.error(err);
+            }
+        });
     };
 
     return (
