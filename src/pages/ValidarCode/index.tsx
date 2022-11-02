@@ -2,26 +2,24 @@ import Button from '../../components/Button';
 import FooterBanner from '../../components/FooterBanner';
 import Input from '../../components/Input';
 import Title from '../../components/Title';
-import { CadastroWrapper, Form } from './style';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { CognitoUser, CognitoUserPool } from 'amazon-cognito-identity-js';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
+import Form from '../../components/Form';
+import Grid from '../../components/Grid';
+import { schemaCode } from '../../utils/yupSchema';
 interface FormData {
     email: string;
     code: string;
 }
 
-const schema = yup.object({
-    email: yup
-        .string()
-        .required('Digite seu e-mail')
-        .matches(
-            /^[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
-            'Email inválido',
-        ),
-    code: yup.string().required('Digite o código de validação'),
-});
+const items = [
+    { name: 'Iniciar Sessão', link: '/login' },
+    { name: 'Cadastre-se', link: '/' },
+];
 
 const ValidarCode = () => {
     const {
@@ -29,7 +27,7 @@ const ValidarCode = () => {
         handleSubmit,
         formState: { errors },
     } = useForm<FormData>({
-        resolver: yupResolver(schema),
+        resolver: yupResolver(schemaCode),
     });
 
     const onSubmit = (data: FormData) => {
@@ -50,7 +48,10 @@ const ValidarCode = () => {
     };
 
     return (
-        <CadastroWrapper>
+        <Grid>
+            <header>
+                <Navbar items={items} />
+            </header>
             <Title>Confirmação de código</Title>
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Input
@@ -67,8 +68,10 @@ const ValidarCode = () => {
                 />
                 <Button type='submit'>Confirmar</Button>
             </Form>
-            <FooterBanner />
-        </CadastroWrapper>
+            <Footer>
+                <FooterBanner />
+            </Footer>
+        </Grid>
     );
 };
 
