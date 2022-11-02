@@ -8,6 +8,7 @@ function App() {
         <div className='App'>
             <Router>
                 <Routes>
+                    <Route path='/' element={<Cadastro />} />
                     <Route path='/cadastro' element={<Cadastro />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/code' element={<ValidarCode />} />

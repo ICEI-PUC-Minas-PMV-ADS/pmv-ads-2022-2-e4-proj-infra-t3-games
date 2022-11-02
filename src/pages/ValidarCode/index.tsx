@@ -4,7 +4,6 @@ import Input from '../../components/Input';
 import Title from '../../components/Title';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { CognitoUser, CognitoUserPool } from 'amazon-cognito-identity-js';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
