@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import banner from '../../assets/img/footer-banner.png';
 
-export const Footer = styled.footer`
+export const FooterGroup = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     width: 100%;
@@ -10,7 +10,7 @@ export const Footer = styled.footer`
     background-size: cover;
     align-items: center;
     justify-items: center;
-    padding: 0 50px;
+    padding: 0 20px;
     gap: 20px;
 `;
 

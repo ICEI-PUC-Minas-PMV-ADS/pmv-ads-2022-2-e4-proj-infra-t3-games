@@ -1,9 +1,9 @@
-import { Footer, FooterButton, FooterImage, FooterInfo, FooterText } from './style';
+import { FooterButton, FooterImage, FooterInfo, FooterText, FooterGroup } from './style';
 import gameLibrary from '../../assets/img/game-library.png';
 import { ArrowRight } from 'phosphor-react';
 const FooterBanner = () => {
     return (
-        <Footer>
+        <FooterGroup>
             <FooterInfo>
                 <FooterText>
                     Pesquise por gênero, características, preço e muito mais para encontrar seu
@@ -15,7 +15,7 @@ const FooterBanner = () => {
                 </FooterButton>
             </FooterInfo>
             <FooterImage src={gameLibrary} />
-        </Footer>
+        </FooterGroup>
     );
 };
 
