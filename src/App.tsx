@@ -1,15 +1,18 @@
-import React from 'react';
 import Cadastro from './pages/Cadastro';
-import Login from './pages/Login'
+import Login from './pages/Login';
 import ValidarCode from './pages/ValidarCode';
-import Container from './templates/Container';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
     return (
         <div className='App'>
-             {/* <Cadastro />  */}
-             <Login/> 
-            {/* <ValidarCode /> */}
+            <Router>
+                <Routes>
+                    <Route path='/cadastro' element={<Cadastro />} />
+                    <Route path='/login' element={<Login />} />
+                    <Route path='/code' element={<ValidarCode />} />
+                </Routes>
+            </Router>
         </div>
     );
 }
