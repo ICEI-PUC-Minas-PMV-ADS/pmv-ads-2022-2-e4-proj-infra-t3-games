@@ -5,6 +5,7 @@ export const StyledDiv = styled.div`
     flex-direction: column;
     gap: 10px;
     padding: 0 20px;
+    position: relative;
 `;
 
 export const StyledInput = styled.input`
@@ -31,8 +32,11 @@ export const StyledInput = styled.input`
 `;
 
 export const ErrorMessage = styled.span`
-    text-align: center;
+    position: absolute;
     color: #d00c23;
     font-family: 'Inter';
-    font-size: 18px;
+    font-size: 16px;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
 `;
