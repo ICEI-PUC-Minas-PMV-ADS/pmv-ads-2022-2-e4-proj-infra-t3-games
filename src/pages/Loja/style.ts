@@ -38,3 +38,9 @@ export const LancamentosSeparator = styled.p`
     margin: 5px 0;
     border: 1px solid #bd0059;
 `;
+
+export const DestaquesGroup = styled.div`
+    display: flex;
+    gap: 30px;
+    margin-bottom: 60px;
+`;

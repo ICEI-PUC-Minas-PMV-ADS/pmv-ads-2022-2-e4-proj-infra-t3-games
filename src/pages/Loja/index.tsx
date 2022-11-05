@@ -1,3 +1,4 @@
+import CardDestaques from '../../components/CardDestaques';
 import { ResgateButton } from '../../components/CardLancamento/style';
 import FooterBanner from '../../components/FooterBanner';
 import GamesCarousel from '../../components/GamesCarousel';
@@ -11,7 +12,12 @@ import {
     Main,
     MainGameDescription,
     MainGameGroup,
+    DestaquesGroup,
 } from './style';
+
+import destaque1 from '../../assets/img/destaque-1.png';
+import destaque2 from '../../assets/img/destaque-2.png';
+import destaque3 from '../../assets/img/destaque-3.png';
 
 const items = [
     { name: 'Iniciar Sessão', link: '/login' },
@@ -41,6 +47,23 @@ const Loja = () => {
                     </LancamentosTitle>
                     <GamesCarousel />
                 </LancamentosGroup>
+                <DestaquesGroup>
+                    <CardDestaques
+                        src={destaque1}
+                        title='Liquidação de Corrida da Ubisoft'
+                        text='Economize até 80% em jogos de corrida, incluindo Riders Republic, The Crew 2 e Steep. Termina em 11 de agosto.'
+                    />
+                    <CardDestaques
+                        src={destaque2}
+                        title='Rocket League'
+                        text='Pegue as trilhas com o Pacote Ford Bronco Raptor RLE!'
+                    />
+                    <CardDestaques
+                        src={destaque3}
+                        title='Genshin Impact - Versão 2.8'
+                        text='Esta atualização chega com grandes aventuras, trajes elegantes e histórias intrigantes sobre Shikanoin Heizou e amigos!'
+                    />
+                </DestaquesGroup>
             </Main>
             <FooterBanner />
         </div>
