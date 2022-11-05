@@ -27,9 +27,9 @@ export const ResgateButton = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 82px;
+    width: max-content;
     height: 18px;
-    padding: 14px 28px;
+    padding: 14px 24px;
     font-size: 14px;
     background: linear-gradient(
         90deg,
