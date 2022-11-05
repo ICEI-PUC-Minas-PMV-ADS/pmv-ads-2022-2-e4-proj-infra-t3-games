@@ -1,5 +1,5 @@
 import React, { ComponentPropsWithoutRef } from 'react';
-import { StyledGrid } from './styles';
+import { StyledGrid } from './style';
 
 const Grid = ({ children }: ComponentPropsWithoutRef<'div'>) => {
     return <StyledGrid>{children}</StyledGrid>;
