@@ -1,5 +1,5 @@
 import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper } from 'swiper/react';
 import { Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -13,8 +13,29 @@ const GamesCarousel = () => {
             <Swiper
                 modules={[Pagination]}
                 pagination={{ clickable: true }}
-                spaceBetween={28}
-                slidesPerView={6}
+                grabCursor={true}
+                breakpoints={{
+                    1: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    550: {
+                        slidesPerView: 3,
+                        spaceBetween: 20,
+                    },
+                    710: {
+                        slidesPerView: 4,
+                        spaceBetween: 20,
+                    },
+                    890: {
+                        slidesPerView: 5,
+                        spaceBetween: 20,
+                    },
+                    1064: {
+                        slidesPerView: 6,
+                        spaceBetween: 20,
+                    },
+                }}
             >
                 <StyledSwiperSlide>
                     <CardLancamento />
