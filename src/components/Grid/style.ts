@@ -5,6 +5,5 @@ export const StyledGrid = styled.div`
     grid-template-columns: 1fr;
     min-height: 100vh;
     width: 100%;
-    background: #211b23;
     padding-bottom: 45px;
 `;

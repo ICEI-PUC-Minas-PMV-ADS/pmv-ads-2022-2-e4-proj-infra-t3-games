@@ -27,5 +27,25 @@ export const GlobalStyles = createGlobalStyle`
                 border-radius: 40px;
             }
         }
+
+        body {
+            background: #211b23;
+        }
+
+        .swiper-pagination {
+            top: 0px;
+            text-align: right;
+            z-index: 0;
+        }
+
+        .swiper-pagination-bullet {
+            opacity: 0.5;
+            background: #ffffff;
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: #7800b3;
+        }
     `}
 `;
