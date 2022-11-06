@@ -44,3 +44,13 @@ export const DestaquesGroup = styled.div`
     gap: 30px;
     margin-bottom: 60px;
 `;
+
+export const CardGameGroup = styled.div`
+    margin: 100px 0;
+`;
+
+export const CardGameGrid = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+`;

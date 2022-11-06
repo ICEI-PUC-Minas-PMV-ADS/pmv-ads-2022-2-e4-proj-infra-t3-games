@@ -4,7 +4,7 @@ import cod from '../../assets/img/cod.jpg';
 
 export const Background = styled.div`
     background-image: url(${cod});
-    height: 100vh;
+    height: 1160px;
     position: absolute;
     left: 0;
     right: 0;

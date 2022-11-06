@@ -13,11 +13,15 @@ import {
     MainGameDescription,
     MainGameGroup,
     DestaquesGroup,
+    CardGameGroup,
+    CardGameGrid,
 } from './style';
 
 import destaque1 from '../../assets/img/destaque-1.png';
 import destaque2 from '../../assets/img/destaque-2.png';
 import destaque3 from '../../assets/img/destaque-3.png';
+import CardGamePreco from '../../components/CardGamePreco';
+import SectionTitle from '../../components/SectionTitle';
 
 const items = [
     { name: 'Iniciar Sessão', link: '/login' },
@@ -26,7 +30,7 @@ const items = [
 
 const Loja = () => {
     return (
-        <div>
+        <div style={{ paddingBottom: '40px' }}>
             <MainGameBg />
             <Navbar items={items} />
             <Main>
@@ -64,6 +68,17 @@ const Loja = () => {
                         text='Esta atualização chega com grandes aventuras, trajes elegantes e histórias intrigantes sobre Shikanoin Heizou e amigos!'
                     />
                 </DestaquesGroup>
+                <CardGameGroup>
+                    <SectionTitle>Navegue pelos games</SectionTitle>
+                    <CardGameGrid>
+                        <CardGamePreco />
+                        <CardGamePreco />
+                        <CardGamePreco />
+                        <CardGamePreco />
+                        <CardGamePreco />
+                        <CardGamePreco />
+                    </CardGameGrid>
+                </CardGameGroup>
             </Main>
             <FooterBanner />
         </div>
