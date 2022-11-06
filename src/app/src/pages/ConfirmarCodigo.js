@@ -14,60 +14,48 @@ import { useNavigation } from '@react-navigation/native';
   
 
 
-const Register = () => {
+const ConfirmarCodigo = () => {
   const navigation = useNavigation();
 
   const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [code, setCode] = useState('');
 
-  const {setSigned, setUser} = useUser();
 
-  const signUp = async () =>{
+  const confirmSignUp = async  () => {
     try {
-      const { user } = await Auth.signUp({
-            username,
-            password,
-            attributes: {
-                email: username,          // optional
-            },
-            autoSignIn: { // optional - enables auto sign in after user is confirmed
-                enabled: true,
-            }
-        });
-        console.log(user);
-        setUser(user)
-        setSigned(true)
+      await Auth.confirmSignUp(username, code);
+      navigation.navigate('Login')
     } catch (error) {
-        console.log('error signing up:', error);
+        console.log('error confirming sign up', error);
     }
-  }
+}
 
   return (
     <Container>
      <Header />
-      <Headline style={styles.textHeader}>Cadastre-se</Headline>
+      <Headline style={styles.textHeader}>Confirmar Usuario</Headline>
       <Body>
       <TextInput
           style={styles.input}
-          label="Email"
+          label="Username"
           value={username}
           onChangeText={(text) => setUsername(text)}
           left={<TextInput.Icon name="account" />}
         />
         <TextInput
         style={styles.input}
-          label="Senha"
-          value={password}
+          label="Code"
+          value={code}
           secureTextEntry
-          onChangeText={(text) => setPassword(text)}
+          onChangeText={(text) => setCode(text)}
           left={<TextInput.Icon name="key" />}
         />
         
         <Button
           style={styles.button}
           mode="contained"
-          onPress={signUp}>
-          Cadastrar
+          onPress={confirmSignUp}>
+          Confirmar Cadastro
         </Button>
         <Button
           style={styles.button}
@@ -112,4 +100,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Register;
+export default ConfirmarCodigo;

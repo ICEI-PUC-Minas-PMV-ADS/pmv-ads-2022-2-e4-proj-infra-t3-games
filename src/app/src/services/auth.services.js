@@ -1,45 +1,30 @@
-import API from './webapi.services';
-import {BASE_URL} from './urls';
+import { Hub } from 'aws-amplify';
+import { Auth } from 'aws-amplify';
 
-export const register = async (param) => {
-  try{
-    // conectar na api depois
-    /*return await API.post(`${BASE_URL}/register`, param).then( 
-      response => {
-        return response.data;
-      },
-      error =>{
-        console.log(error);
-        return  null;
-      }
-    );*/
-    return{
-      id: "123",
-      email: 'teste@gmail.com',
-      "primeiroNome": "",
-      "ultimoNome": "",
-      "perfil": ""
+async function signOut() {
+    try {
+        await Auth.signOut();
+    } catch (error) {
+        console.log('error signing out: ', error);
     }
-    
-  }catch(error){
-    console.log(error);
-    return null;
-  }
+}
+async function resendConfirmationCode() {
+    try {
+        await Auth.resendSignUp(username);
+        console.log('code resent successfully');
+    } catch (err) {
+        console.log('error resending code: ', err);
+    }
 }
 
-export const login = async (param) => {
-  try{
-    return await API.post(`${BASE_URL}/login`, param).then( 
-      response => {
-        return response.data;
-      },
-      error =>{
-        console.log(error);
-        return  null;
-      }
-    );
-  }catch(error){
-    console.log(error);
-    return null;
-  }
+function listenToAutoSignInEvent() {
+    Hub.listen('auth', ({ payload }) => {
+        const { event } = payload;
+        if (event === 'autoSignIn') {
+            const user = payload.data;
+            // assign user
+        } else if (event === 'autoSignIn_failure') {
+            // redirect to sign in page
+        }
+    })
 }

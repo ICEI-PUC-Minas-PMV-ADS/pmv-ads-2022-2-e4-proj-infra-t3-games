@@ -1,0 +1,7 @@
+const awsconfig = {
+    region: 'us-east-1',
+    userPoolId: '**-****-*_******',
+    signUpVerificationMethod: 'link', // 'code' | 'link' 
+    userPoolWebClientId: '***************',
+}
+export default awsconfig;

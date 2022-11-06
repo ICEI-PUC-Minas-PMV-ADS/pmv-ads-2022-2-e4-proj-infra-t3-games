@@ -4,59 +4,48 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { TextInput, Button, Headline, Text } from 'react-native-paper';
 import Container from '../components/Container';
 import Body from '../components/Body';
-import Input from '../components/Input';
 import Logo from '../components/Logo';
 import Header from './../components/Header';
-
+import { Auth } from 'aws-amplify';
 
 import { useNavigation } from '@react-navigation/native';
 import { useUser } from '../contexts/UserContext';
 
-import { login } from '../services/auth.services';
+
 
 const Login = () => {
 
+  
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const {setSigned, setUser} = useUser();
+
+
   const navigation = useNavigation();
-  const { setSigned, setName } = useUser();
 
-  const [email, setEmail] = useState('E-mail');
-  const [password, setPassword] = useState('pucminas');
-
-  const handleLogin = () => {
-
-    login({
-      email: email,
-      password: password
-    }).then(res => {
-      console.log(res);
-
-      if (res && res.user) {
-        setSigned(true);
-        setName(res.user.name);
-        AsyncStorage.setItem('@TOKEN_KEY', res.accessToken).then();
-      } else {
-        Alert.alert('Atenção', 'Usuário ou senha inválidos!');
-      }
-
-    });
-
+  const signIn = async () =>{
+    try {
+        const user = await Auth.signIn(username, password);
+        setUser(user)
+        setSigned(true)
+        navigation.navigate('Home')
+    } catch (error) {
+        console.log('error signing in', error);
+    }
   }
-
+  
   return (
     <Container>
-      <Header title={''} />
+      <Header />
 
       <Headline style={styles.textHeader}>Login</Headline>
-
-
-      <Body>
-
         <TextInput
           style={styles.input}
 
-          label="Email"
-          value={email}
-          onChangeText={(text) => setEmail(text)}
+          label="Username"
+          value={username}
+          onChangeText={(text) => setUsername(text)}
           left={<TextInput.Icon name="account" />}
         />
         <TextInput
@@ -71,7 +60,7 @@ const Login = () => {
         <Button
           style={styles.button}
           mode="contained"
-          onPress={handleLogin}>
+          onPress={signIn}>
           LOGIN
         </Button>
         <View style={{flex: 1, flexDirection: 'row'}}
@@ -85,12 +74,12 @@ const Login = () => {
         <Button
           style={styles.butt}
           mode="outlined"
-          onPress={() => navigation.navigate('Register')}>
-          Esqueci a Senha
+          onPress={() => navigation.navigate('ConfirmarCodigo')}>
+          Confirmar Codigo
         </Button>
         </View>
         
-      </Body>
+     
       <Logo />
 
     </Container>
@@ -98,7 +87,6 @@ const Login = () => {
 };
 
 const styles = StyleSheet.create({
-
   button: {
     marginBottom: 8,
     width: 220,
@@ -114,16 +102,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 30,
     marginBottom: 12,
-    background: 'rgba(217, 217, 217, 0.29)',
+    backgroundColor: 'rgba(217, 217, 217, 0.29)',
 
   },
   input: {
-    background: 'rgba(217, 217, 217, 0.29)',
+    backgroundColor:'#908e91',
     border: '4 solid #000000',
     boxShadow: '0 4 4 rgba(0, 0, 0, 0.25)',
     borderRadius: 10,
     margin: 10,
     padingLeft: 40,
+
+    
   },
   btn_cadastro: {
     marginBottom: 8,
@@ -131,8 +121,6 @@ const styles = StyleSheet.create({
     height: 37,
     left: 0,
     top: 30,
-
-
     background: '#7800B3',
     borderRadius: 20,
 
@@ -153,7 +141,8 @@ const styles = StyleSheet.create({
   textHeader: {
     textAlign: 'center',
     border: '#7800B3',
-  },
+    color: '#9b9b9b',
+    },
   butoo: {
     flex: 1,
     paddingLeft: 15,

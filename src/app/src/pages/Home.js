@@ -1,160 +1,261 @@
-import React from 'react';
-import { StyleSheet, View, Text, Image, Dimensions, SafeAreaView, FlatList, StatusBar } from 'react-native';
-import Carousel, { PaginationLight } from 'react-native-x-carousel';
+import { StatusBar } from 'expo-status-bar';
+import React, { useEffect, useState } from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  SectionList,
+  SafeAreaView,
+  Image,
+  FlatList,
+  Button,
+  TouchableOpacity,
+} from 'react-native';
 
-const { width } = Dimensions.get('window');
+import { LinearGradient } from 'expo-linear-gradient';
+import Body from '../components/Body';
+import { getList } from '../services/Games';
+import { NavigationContainer } from '@react-navigation/native';
 
-const DATA_LIST = [
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'First Item',
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Second Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Item',
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-12',
-    title: 'Fourth Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-23',
-    title: 'Fifth Item',
-  },
-];
+const Home = ({ navigation }) => {
 
-const DATA = [
-  {
-    coverImageUri: 'https://user-images.githubusercontent.com/6414178/73920321-2357b680-4900-11ea-89d5-2e8cbecec9f6.jpg',
-    cornerLabelColor: '#FFD300',
-    cornerLabelText: 'DADA',
-  },
-  {
-    coverImageUri: 'https://user-images.githubusercontent.com/6414178/73920358-336f9600-4900-11ea-8eec-cc919b991e90.jpg',
-    cornerLabelColor: '#0080ff',
-    cornerLabelText: 'NEW',
-  },
-  {
-    coverImageUri: 'https://user-images.githubusercontent.com/6414178/73927874-25744200-490d-11ea-940f-db3e5dbd8b2b.jpg',
-    cornerLabelColor: '#2ECC40',
-    cornerLabelText: '-75%',
-  },
-  {
-    coverImageUri: 'https://user-images.githubusercontent.com/6414178/73920399-45e9cf80-4900-11ea-9d5b-743fe5e8b9a4.jpg',
-    cornerLabelColor: '#2ECC40',
-    cornerLabelText: '-20%',
-  },
-];
-
-const Item = ({ title }) => (
+const Item = ({ title, thumbnailUrl, descricao }) => (
   <View style={styles.item}>
     <Text style={styles.title}>{title}</Text>
+    <Text style={styles.descricao}>{descricao}</Text>
+    <Image
+      source={{
+        uri: thumbnailUrl + '.png',
+      }}
+      style={styles.itemPhoto}
+      resizeMode="cover"
+    />
+    
   </View>
 );
-const Home = () => {
-  const renderList = ({ item }) => <Item title={item.title} />;
 
-  const renderItem = data => (
-    <View
-      key={data.coverImageUri}
-      style={styles.cardContainer}
-    >
-      <View
-        style={styles.cardWrapper}
-      >
-        <Image
-          style={styles.card}
-          source={{ uri: data.coverImageUri }}
-        />
-        <View
-          style={[
-            styles.cornerLabel,
-            { backgroundColor: data.cornerLabelColor },
-          ]}
-        >
-          <Text style={styles.cornerLabelText}>
-            {data.cornerLabelText}
-          </Text>
-        </View>
-      </View>
-    </View>
-  );
 
+const ListItem = ({ item }) => {
   return (
-    <View style={styles.container}>
-      <Carousel
-        pagination={PaginationLight}
-        renderItem={renderItem}
-        data={DATA}
-        loop
-        autoplay
+    <View style={styles.ite}>
+<TouchableOpacity onPress={() => navigation.navigate('Login')} >
+
+      <Image
+        source={{
+          uri: item.uri,
+        }}
+        style={styles.itemPhoto}
+        resizeMode="cover"
       />
-      <Carousel
-        pagination={PaginationLight}
-        renderItem={renderItem}
-        data={DATA}
-        loop
-        autoplay
-      />
-      <SafeAreaView style={styles.containerList}>
-        <FlatList data={DATA_LIST} renderItem={renderList} keyExtractor={item => item.id} />
-      </SafeAreaView>
+      </TouchableOpacity>
+
+      <LinearGradient
+        style={{
+          height: 25,
+          width: 80,
+          marginTop: 15,
+          borderRadius: 5,
+        }
+        }
+
+        start={{ x: 0, y: 1 }}
+        end={{ x: 1, y: 0 }}
+        locations={[.5, 0.7]}
+        colors={['rgba(255, 13, 211, 0.542483)', 'rgba(rgba(123, 0, 179, 0)']}
+
+      >
+        <Text style={styles.itemText}>{item.text}</Text>
+      </LinearGradient>
     </View>
   );
 };
 
+const renderItem = ({ item }) => (
+  
+  <Item title={item.nome} thumbnailUrl={item.url_imagem} descricao={item.descricao}/>
+
+);
+
+  const [list, setList] = useState([]);
+useEffect(() => {
+  let mounted = true;
+  getList()
+    .then(items => {
+      if(mounted) {
+        setList(items)
+      }
+    })
+  return () => mounted = false;
+}, [])
+  return (
+  
+    <Body>
+      <View style={styles.container}>
+      
+        <StatusBar style="light" />
+        <SafeAreaView style={{ flex: 1 }}>
+        
+          <SectionList
+            contentContainerStyle={{ paddingHorizontal: 10 }}
+            stickySectionHeadersEnabled={false}
+            sections={SECTIONS}
+            renderSectionHeader={({ section }) => (
+              <>
+              
+                <Text style={styles.sectionHeader}>{section.title}</Text>
+                {section.horizontal ? (
+                  <FlatList
+                    horizontal
+                    data={section.data}
+                    renderItem={({ item }) => <ListItem item={item} />}
+                    showsHorizontalScrollIndicator={false}
+                  />
+                ) : null}
+              </>
+            )}
+            renderItem={({ item, section }) => {
+              if (section.horizontal) {
+                return null;
+              }
+              return <ListItem item={item} />;
+            }}
+          />
+        </SafeAreaView>
+        <SafeAreaView style={styles.containi}>
+          <FlatList
+            data={list}
+            renderItem={renderItem}
+            keyExtractor={item => item.id}
+          />
+          
+          
+        </SafeAreaView>
+      </View>
+      </Body>
+  );
+};
+
+const SECTIONS = [
+  {
+    title: 'Novos Jogos',
+    horizontal: true,
+    data: [
+      {
+        key: '1',
+        text: 'Item text 1',
+        uri: 'https://user-images.githubusercontent.com/6414178/73920321-2357b680-4900-11ea-89d5-2e8cbecec9f6.jpg',
+      },
+      {
+        key: '2',
+        text: 'Item text 2',
+        uri: 'https://user-images.githubusercontent.com/6414178/73920358-336f9600-4900-11ea-8eec-cc919b991e90.jpg',
+      },
+
+      {
+        key: '3',
+        text: 'Item text 3',
+        uri: 'https://user-images.githubusercontent.com/6414178/73927874-25744200-490d-11ea-940f-db3e5dbd8b2b.jpg',
+      },
+      {
+        key: '4',
+        text: 'Item text 4',
+        uri: 'https://picsum.photos/id/1006/200',
+      },
+      {
+        key: '5',
+        text: 'Item text 5',
+        uri: 'https://picsum.photos/id/1008/200',
+      },
+    ],
+  },
+  {
+    title: 'Destaques',
+    horizontal: true,
+    data: [
+      {
+        key: '1',
+        text: 'Item text 1',
+        uri: 'https://user-images.githubusercontent.com/6414178/73927874-25744200-490d-11ea-940f-db3e5dbd8b2b.jpg',
+      },
+      {
+        key: '2',
+        text: 'Item text 2',
+        uri: 'https://user-images.githubusercontent.com/6414178/73920321-2357b680-4900-11ea-89d5-2e8cbecec9f6.jpg',
+      },
+
+      {
+        key: '3',
+        text: 'Item text 3',
+        uri: 'https://user-images.githubusercontent.com/6414178/73920358-336f9600-4900-11ea-8eec-cc919b991e90.jpg',
+      },
+      {
+        key: '4',
+        text: 'Item text 4',
+        uri: 'https://picsum.photos/id/1015/200',
+      },
+      {
+        key: '5',
+        text: 'Item text 5',
+        uri: 'https://picsum.photos/id/1016/200',
+      },
+    ],
+  },
+
+];
+
+
 const styles = StyleSheet.create({
-  containerList: {
+  container: {
+    flex: 1,
+    backgroundColor: '#211B23',
+  },
+  sectionHeader: {
+    fontWeight: '800',
+    fontSize: 18,
+    color: '#f4f4f4',
+    marginTop: 20,
+    marginBottom: 5,
+  },
+  ite: {
+    flex: 1,
+    backgroundColor: '#211B23',
+    margin: 10,
+    alignItems: 'center',
+  },
+  itemPhoto: {
+    width: 80,
+    height: 80,
+  },
+  itemText: {
+    color: 'rgba(255, 255, 255, 0.5)',
+    marginTop: 5,
+  },
+  containi: {
     flex: 1,
     marginTop: StatusBar.currentHeight || 0,
+    borderColor: '#92a8d1',
   },
   item: {
-    backgroundColor: '#f9c2ff',
+    backgroundColor: '#2E2F37',
+    borderRadius: 20,
+
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,
   },
   title: {
-    fontSize: 32,
+    textAlign: 'center',
+    fontSize: 18,
+    color: '#FFFFFF',
+    
   },
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  cardContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    width,
-  },
-  cardWrapper: {
-    borderRadius: 8,
-    overflow: 'hidden',
-  },
-  card: {
-    width: width * 0.9,
-    height: width * 0.5,
-  },
-  cornerLabel: {
-    position: 'absolute',
-    bottom: 0,
-    right: 0,
-    borderTopLeftRadius: 8,
-  },
-  cornerLabelText: {
-    fontSize: 12,
-    color: '#fff',
-    fontWeight: '600',
-    paddingLeft: 5,
-    paddingRight: 5,
-    paddingTop: 2,
-    paddingBottom: 2,
-  },
+  descricao: {
+    textAlign: 'center',
+    fontSize: 10,
+    color: '#FFFFFF',
+    top: 20,
+
+  }
 });
 
 export default Home;

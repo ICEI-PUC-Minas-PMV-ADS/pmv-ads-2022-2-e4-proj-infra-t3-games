@@ -24,3 +24,6 @@ build
 *.njsproj
 *.sln
 *.sw?
+aws-exports.js
+.expo
+settings.json

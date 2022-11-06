@@ -1,38 +1,16 @@
-import React from 'react';
-import { Appbar,View } from 'react-native-paper';
-import {StyleSheet} from 'react-native';
+import * as React from 'react';
+import { Appbar } from 'react-native-paper';
+import { LinearGradient } from 'expo-linear-gradient';
 
-const Header = ({ title, goBack, children}) => {
+const Header = () => {
+  const _goBack = () => console.log('Went back');
+
   return (
-                       
-    <Appbar.Header style={{backgroundColor:'transparent', padding:40}}>
-    
-      {
-        goBack && 
-        <Appbar.BackAction onPress={goBack} />
-      }
-      <Appbar.Content title={title} style={styles.header} />
-
-      {children}
+    <Appbar.Header style={{ backgroundColor:'#211B23', borderColor: '#BD0059', borderBottomWidth: 5,}} >
+      <Appbar.BackAction onPress={_goBack} style={{ backgroundColor:'#C2C2C2' }}  />
+      
     </Appbar.Header>
-
-    
   );
 };
-const styles = StyleSheet.create({
-  header:{
-    alignItems: 'center',
-   },
-    view : {
-    flex: 0.3,
-    backgroundColor: "grey",
-    borderWidth: 5,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    },
-   
-    
- });
- 
 
 export default Header;
