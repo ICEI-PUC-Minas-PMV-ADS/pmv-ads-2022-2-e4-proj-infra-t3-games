@@ -10,6 +10,7 @@ import Footer from '../../components/Footer';
 import Form from '../../components/Form';
 import Grid from '../../components/Grid';
 import { schemaCode } from '../../utils/yupSchema';
+import { useNavigate } from 'react-router-dom';
 interface FormData {
     email: string;
     code: string;
@@ -29,10 +30,12 @@ const ValidarCode = () => {
         resolver: yupResolver(schemaCode),
     });
 
+    const navigate = useNavigate();
+
     const onSubmit = (data: FormData) => {
         const userPool = new CognitoUserPool({
-            UserPoolId: '',
-            ClientId: '',
+            UserPoolId: `${process.env.REACT_APP_USER_POOL_ID}`,
+            ClientId: `${process.env.REACT_APP_CLIENT_ID}`,
         });
 
         const userData = { Username: data.email, Pool: userPool };
@@ -41,8 +44,7 @@ const ValidarCode = () => {
                 alert(err);
                 return;
             }
-            //TODO
-            //Navegar pagina de login
+            navigate("/login");
         });
     };
 

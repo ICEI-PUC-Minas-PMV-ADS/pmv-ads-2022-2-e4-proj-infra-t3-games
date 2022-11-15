@@ -10,12 +10,13 @@ import Grid from '../../components/Grid';
 import Form from '../../components/Form';
 import Footer from '../../components/Footer';
 import { schemaLogin } from '../../utils/yupSchema';
+import { useNavigate } from 'react-router-dom';
 interface FormData {
     email: string;
     password: string;
 }
 
-const items = [{ name: 'Cadastre-se', link: '/cadastro' }];
+const items = [{ name: 'Home', link: '/' },{ name: 'Cadastre-se', link: '/cadastro' }];
 
 const Login = () => {
     const {
@@ -26,10 +27,12 @@ const Login = () => {
         resolver: yupResolver(schemaLogin),
     });
 
+    const navigate = useNavigate();
+    
     const onSubmit = (data: FormData) => {
         const userPool = new CognitoUserPool({
-            UserPoolId: '',
-            ClientId: '',
+            UserPoolId: `${process.env.REACT_APP_USER_POOL_ID}`,
+            ClientId:`${process.env.REACT_APP_CLIENT_ID}`,
         });
         const authenticationDetails = new AuthenticationDetails({
             Username: data.email,
@@ -39,12 +42,8 @@ const Login = () => {
 
         new CognitoUser(userData).authenticateUser(authenticationDetails, {
             onSuccess: function (result) {
-                localStorage.setItem(
-                    'access-token',
-                    JSON.stringify(result.getIdToken().getJwtToken()),
-                );
-                //TODO
-                //navegar home-page
+                localStorage.setItem('token', JSON.stringify(result.getIdToken().getJwtToken()));
+                navigate("/loja")
             },
             onFailure: function (result) {
                 alert(result);

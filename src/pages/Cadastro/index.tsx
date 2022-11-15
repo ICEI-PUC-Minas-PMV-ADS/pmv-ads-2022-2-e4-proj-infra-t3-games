@@ -10,6 +10,7 @@ import Form from '../../components/Form';
 import Footer from '../../components/Footer';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schemaCadastro } from '../../utils/yupSchema';
+import { useNavigate } from 'react-router-dom';
 
 interface FormData {
     email: string;
@@ -17,7 +18,7 @@ interface FormData {
     confirm: string;
 }
 
-const items = [{ name: 'Iniciar Sessão', link: '/login' }];
+const items = [{ name: 'Iniciar Sessão', link: '/login' }, { name: 'Validar Código', link: '/code' }];
 
 const Cadastro = () => {
     const {
@@ -29,6 +30,8 @@ const Cadastro = () => {
         resolver: yupResolver(schemaCadastro),
     });
 
+    const navigate = useNavigate();
+    
     const onSubmit = (data: FormData) => {
         const userPool = new CognitoUserPool({
             UserPoolId: `${process.env.REACT_APP_USER_POOL_ID}`,
@@ -38,9 +41,7 @@ const Cadastro = () => {
             if (err) {
                 console.error(err);
             }
-
-            //TODO
-            //navegar para validarcode-page se cadastro for bem-sucedido
+            navigate("/code");
         });
     };
 

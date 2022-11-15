@@ -25,7 +25,7 @@ import SectionTitle from '../../components/SectionTitle';
 
 const items = [
     { name: 'Iniciar Sessão', link: '/login' },
-    { name: 'Cadastre-se', link: '/' },
+    { name: 'Cadastre-se', link: '/cadastro' },
 ];
 
 const Loja = () => {
