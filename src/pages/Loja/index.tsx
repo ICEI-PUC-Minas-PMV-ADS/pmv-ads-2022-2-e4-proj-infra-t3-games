@@ -22,17 +22,24 @@ import destaque2 from '../../assets/img/destaque-2.png';
 import destaque3 from '../../assets/img/destaque-3.png';
 import CardGamePreco from '../../components/CardGamePreco';
 import SectionTitle from '../../components/SectionTitle';
+import { useAuthContext } from '../../contexts/AuthContext';
 
 const items = [
     { name: 'Iniciar Sessão', link: '/login' },
     { name: 'Cadastre-se', link: '/cadastro' },
 ];
 
+
 const Loja = () => {
+    const { user, logout } = useAuthContext();
+    const items2 = [{name: 'Logout', link: '/login', onClick() {logout()}}]
+
     return (
         <div style={{ paddingBottom: '40px' }}>
             <MainGameBg />
-            <Navbar items={items} />
+
+            {user? <Navbar items={items2} /> : <Navbar items={items} />}
+            
             <Main>
                 <MainGameGroup>
                     <MainGameDescription>

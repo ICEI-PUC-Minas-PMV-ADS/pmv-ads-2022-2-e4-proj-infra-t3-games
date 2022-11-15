@@ -42,8 +42,13 @@ const Login = () => {
 
         new CognitoUser(userData).authenticateUser(authenticationDetails, {
             onSuccess: function (result) {
-                localStorage.setItem('token', JSON.stringify(result.getIdToken().getJwtToken()));
+                let authenticate = {
+                    token: result.getIdToken().getJwtToken(),
+                    userName: data.email
+                }
+                localStorage.setItem('authenticate', JSON.stringify(authenticate));
                 navigate("/loja")
+                window.location.reload();
             },
             onFailure: function (result) {
                 alert(result);

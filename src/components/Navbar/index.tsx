@@ -4,6 +4,7 @@ import { Nav, Ul, StyledLink } from './style';
 type NavbarItems = {
     name: string;
     link: string;
+    onClick?: () => void
 };
 
 interface Props {
@@ -15,7 +16,7 @@ const Navbar = ({ items, ...props }: Props) => {
         <Nav>
             <Ul>
                 {items.map((item) => (
-                    <li key={item.name}>
+                    <li key={item.name} onClick={item.onClick}>
                         <StyledLink to={item.link}>{item.name}</StyledLink>
                     </li>
                 ))}
