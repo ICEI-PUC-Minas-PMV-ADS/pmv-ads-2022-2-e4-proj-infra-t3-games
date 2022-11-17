@@ -15,6 +15,7 @@ interface FormData {
     nome: string;
     descricao: string;
     url_imagem: string;
+    url_fullImagem: string;
     genero: string;
     quantidade: number;
 }
@@ -23,6 +24,7 @@ const schema = yup.object({
     nome: yup.string().required('Digite o nome do Game'),
     descricao: yup.string().required('Digite a descriçao'),
     url_imagem: yup.string().required('Digite a url da imagem'),
+    url_fullImagem: yup.string().required('Digite a url da imagem HD'),
     genero: yup.string().required('Digite o genero do Game'),
     quantidade: yup.number().integer().min(1, 'mínimo 1').max(1000, 'máximo 1000'),
 });
@@ -68,6 +70,12 @@ const CadastroGame = () => {
                     type='text'
                     {...register('url_imagem')}
                     error={errors.url_imagem?.message}
+                />
+                 <Input
+                    placeholder='image HD Url'
+                    type='text'
+                    {...register('url_fullImagem')}
+                    error={errors.url_fullImagem?.message}
                 />
                  <Input
                     placeholder='genero'
