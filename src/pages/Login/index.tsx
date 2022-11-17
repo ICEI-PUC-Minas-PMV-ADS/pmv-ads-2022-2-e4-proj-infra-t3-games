@@ -44,9 +44,11 @@ const Login = () => {
             onSuccess: function (result) {
                 let authenticate = {
                     token: result.getIdToken().getJwtToken(),
-                    userName: data.email
+                    userName: data.email,
+                    time: new Date().getTime()
                 }
                 localStorage.setItem('authenticate', JSON.stringify(authenticate));
+                localStorage.setItem('token',result.getIdToken().getJwtToken())
                 navigate("/loja")
                 window.location.reload();
             },

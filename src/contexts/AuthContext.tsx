@@ -1,4 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { runInThisContext } from 'vm';
 
 interface IAuthContextData {
   logout: () => void;
@@ -8,6 +9,7 @@ interface IAuthContextData {
 interface autheticate {
   userName: string;
   token: string;
+  time: number
 }
 
 const AuthContext = createContext({} as IAuthContextData);
@@ -21,20 +23,24 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
 
   useEffect(() => {
     const authenticate = localStorage.getItem(LOCAL_STORAGE_KEY);
-
     if (authenticate) {
       setauthenticate(JSON.parse(authenticate));
-    } else {
-      setauthenticate(undefined);
     }
   }, []);
 
   const handleLogout = useCallback(() => {
-    localStorage.removeItem(LOCAL_STORAGE_KEY);
+    localStorage.clear();
     setauthenticate(undefined);
   }, []);
 
-  const isAuthenticated = useMemo(() => !!authenticate, [authenticate]);
+  const isAuthenticated = useMemo(() => {
+    if(authenticate?.time) {
+      const now = new Date().getTime()
+      if(new Date(now - authenticate.time).getMinutes() < 15) {return true} else {return false}
+    } else 
+    return false    
+  }, [authenticate]);
+
   const user = !!authenticate? authenticate.userName : '';
 
   return (

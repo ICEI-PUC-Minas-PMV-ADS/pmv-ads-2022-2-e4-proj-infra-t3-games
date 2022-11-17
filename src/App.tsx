@@ -3,6 +3,7 @@ import Login from './pages/Login';
 import ValidarCode from './pages/ValidarCode';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Loja from './pages/Loja';
+import CadastroGame from './pages/CadastroGame';
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                     <Route path='/login' element={<Login />} />
                     <Route path='/code' element={<ValidarCode />} />
                     <Route path='/loja' element={<Loja />} />
+                    <Route path='/cadastrogame' element={<CadastroGame />} />
                 </Routes>
             </Router>
         </div>

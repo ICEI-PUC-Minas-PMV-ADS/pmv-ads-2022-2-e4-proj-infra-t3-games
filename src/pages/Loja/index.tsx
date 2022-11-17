@@ -31,14 +31,17 @@ const items = [
 
 
 const Loja = () => {
-    const { user, logout } = useAuthContext();
-    const items2 = [{name: 'Logout', link: '/login', onClick() {logout()}}]
+    const { isAuthenticated, logout } = useAuthContext();
+    const items2 = [
+        {name: 'Logout', link: '/login', onClick() {logout()}},
+        { name: 'Cadastrar Game', link: '/cadastrogame' }
+    ];
 
     return (
         <div style={{ paddingBottom: '40px' }}>
             <MainGameBg />
 
-            {user? <Navbar items={items2} /> : <Navbar items={items} />}
+            {isAuthenticated? <Navbar items={items2} /> : <Navbar items={items} />}
             
             <Main>
                 <MainGameGroup>
