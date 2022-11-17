@@ -22,7 +22,7 @@ export const CardInfo = styled.div`
 
 export const CardTitle = styled.strong`
     display: block;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 700;
     margin-bottom: 5px;
 `;
@@ -30,5 +30,5 @@ export const CardTitle = styled.strong`
 export const CardText = styled.span`
     display: block;
     line-height: 21px;
-    font-size: 14px;
+    font-size: 18px;
 `;
