@@ -8,11 +8,35 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Games {
-  game_id    String @id @default(auto()) @map("_id") @db.ObjectId
-  nome       String
+type ResgatesJogo {
   descricao  String
-  url_imagem String
   genero     String
+  nome       String
   quantidade Int
+  url_imagem String
+}
+
+type ResgatesUsuario {
+  email String
+  nome  String
+}
+
+model Games {
+  id             String  @id @default(auto()) @map("_id") @db.ObjectId
+  descricao      String
+  genero         String
+  nome           String
+  quantidade     Int
+  url_fullImagem String
+  url_imagem     String
+}
+
+model resgates {
+  id             String           @id @default(auto()) @map("_id") @db.ObjectId
+  v              Int              @map("__v")
+  codigo_resgate String
+  email_enviado  Boolean
+  hora           String
+  jogo           ResgatesJogo?
+  usuario        ResgatesUsuario?
 }

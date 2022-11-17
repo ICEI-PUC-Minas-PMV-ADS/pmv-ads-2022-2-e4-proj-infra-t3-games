@@ -15,13 +15,15 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 app.post('/games', async (req, res) => {
-    const {nome, descricao, url_imagem, genero, quantidade} = req.body;
+    const {nome, descricao, url_imagem, url_fullImagem, genero, quantidade} =
+        req.body;
 
     const game = await prisma.games.create({
         data: {
             nome,
             descricao,
             url_imagem,
+            url_fullImagem,
             genero,
             quantidade,
         },

@@ -17,13 +17,15 @@ app.use(express.json());
 app.put('/games/:game_id', async (req, res) => {
     const game_id = req.params.game_id;
 
-    const {nome, descricao, url_imagem, genero, quantidade} = req.body;
+    const {nome, descricao, url_imagem, url_fullImagem, genero, quantidade} =
+        req.body;
 
     const game = await prisma.games.update({
         where: {game_id},
         data: {
             nome,
             descricao,
+            url_fullImagem,
             url_imagem,
             genero,
             quantidade,
