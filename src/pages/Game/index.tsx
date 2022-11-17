@@ -1,8 +1,9 @@
 import { useLocation } from 'react-router-dom';
+import Button from '../../components/Button';
 import Navbar from '../../components/Navbar';
 import { useAuthContext } from '../../contexts/AuthContext';
 import { Main } from '../Loja/style';
-import { GameImage, Description, GameWrapper } from './style';
+import { GameImage, Description, GameWrapper, GameName } from './style';
 
 interface IGame {
     id: string;
@@ -35,8 +36,11 @@ const Game = () => {
             {isAuthenticated ? <Navbar items={items2} /> : <Navbar items={items} />}
             <Main>
                 <GameWrapper>
+                    <GameName>{game.nome}</GameName>
                     <GameImage src={game.url_fullImagem} />
+                    <Description>Gênero: {game.genero}</Description>
                     <Description>{game.descricao}</Description>
+                    <Button>Resgatar</Button>
                 </GameWrapper>
             </Main>
         </div>
