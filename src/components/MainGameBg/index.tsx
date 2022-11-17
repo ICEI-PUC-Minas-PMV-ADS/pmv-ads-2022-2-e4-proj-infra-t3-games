@@ -1,8 +1,12 @@
 import React from 'react';
 import { Background } from './style';
 
-const MainGameBg = () => {
-    return <Background />;
+interface IMainGameBG {
+    image: string;
+}
+
+const MainGameBg = ({ image }: IMainGameBG) => {
+    return <Background image={image} />;
 };
 
 export default MainGameBg;

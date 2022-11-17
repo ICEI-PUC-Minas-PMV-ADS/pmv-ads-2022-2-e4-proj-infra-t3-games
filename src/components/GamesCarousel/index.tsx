@@ -1,18 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper } from 'swiper/react';
 import { Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
-
+import axios from 'axios';
 import CardLancamento from '../CardLancamento';
-import { CarouselContainer, StyledSwiperSlide } from './style';
+import { CarouselContainer, StyledSwiperSlide, ResgateButton } from './style';
+import { useNavigate } from 'react-router-dom';
+
+export interface IGame {
+    id: string;
+    nome: string;
+    descricao: string;
+    url_imagem: string;
+    url_fullImagem: string;
+    genero: string;
+    quantidade: number;
+}
 
 const GamesCarousel = () => {
+    const [games, setGames] = useState<IGame[]>([]);
+
+    useEffect(() => {
+        axios('https://870u95h2tb.execute-api.us-east-1.amazonaws.com/dev/games').then((response) =>
+            setGames(response.data),
+        );
+    }, []);
+
+    const navigate = useNavigate();
+
+    const handleOpenGame = ({ id, url_imagem, nome, url_fullImagem, descricao, genero }: IGame) => {
+        navigate(`/loja/game/${id}`, {
+            state: { id, url_imagem, nome, url_fullImagem, descricao, genero },
+        });
+    };
+
     return (
         <CarouselContainer>
             <Swiper
                 modules={[Pagination]}
-                pagination={{ clickable: true }}
                 grabCursor={true}
                 breakpoints={{
                     1: {
@@ -37,54 +63,16 @@ const GamesCarousel = () => {
                     },
                 }}
             >
-                <StyledSwiperSlide>
-                    <CardLancamento />
-                </StyledSwiperSlide>
-                <StyledSwiperSlide>
-                    <CardLancamento />
-                </StyledSwiperSlide>
-                <StyledSwiperSlide>
-                    <CardLancamento />
-                </StyledSwiperSlide>
-                <StyledSwiperSlide>
-                    <CardLancamento />
-                </StyledSwiperSlide>
-                <StyledSwiperSlide>
-                    <CardLancamento />
-                </StyledSwiperSlide>
-                <StyledSwiperSlide>
-                    <CardLancamento />
-                </StyledSwiperSlide>
-                <StyledSwiperSlide>
-                    <CardLancamento />
-                </StyledSwiperSlide>
-                <StyledSwiperSlide>
-                    <CardLancamento />
-                </StyledSwiperSlide>
-                <StyledSwiperSlide>
-                    <CardLancamento />
-                </StyledSwiperSlide>
-                <StyledSwiperSlide>
-                    <CardLancamento />
-                </StyledSwiperSlide>
-                <StyledSwiperSlide>
-                    <CardLancamento />
-                </StyledSwiperSlide>
-                <StyledSwiperSlide>
-                    <CardLancamento />
-                </StyledSwiperSlide>
-                <StyledSwiperSlide>
-                    <CardLancamento />
-                </StyledSwiperSlide>
-                <StyledSwiperSlide>
-                    <CardLancamento />
-                </StyledSwiperSlide>
-                <StyledSwiperSlide>
-                    <CardLancamento />
-                </StyledSwiperSlide>
-                <StyledSwiperSlide>
-                    <CardLancamento />
-                </StyledSwiperSlide>
+                {games.map((game) => (
+                    <StyledSwiperSlide key={game.id}>
+                        <CardLancamento
+                            nome={game.nome}
+                            url_imagem={game.url_imagem}
+                            id={game.id}
+                        />
+                        <ResgateButton onClick={() => handleOpenGame(game)}>Resgatar</ResgateButton>
+                    </StyledSwiperSlide>
+                ))}
             </Swiper>
         </CarouselContainer>
     );

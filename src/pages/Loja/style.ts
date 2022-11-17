@@ -15,6 +15,7 @@ export const MainGameDescription = styled.p`
     max-width: 456px;
     color: #ffffff;
     margin-bottom: 26px;
+    font-size: 20px;
     line-height: 24px;
 `;
 
@@ -23,13 +24,13 @@ export const LancamentosGroup = styled.div`
 `;
 
 export const LancamentosTitle = styled.div`
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 `;
 
 export const LancamentosText = styled.p`
     width: 5ch;
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 20px;
+    font-weight: 700;
     color: #ffffff;
 `;
 

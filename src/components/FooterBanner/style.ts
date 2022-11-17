@@ -21,7 +21,7 @@ export const FooterInfo = styled.div`
 export const FooterText = styled.p`
     max-width: 332px;
     color: #ffffff;
-    font-size: 16px;
+    font-size: 18px;
     font-family: 'Inter';
     line-height: 24px;
     margin-bottom: 16px;

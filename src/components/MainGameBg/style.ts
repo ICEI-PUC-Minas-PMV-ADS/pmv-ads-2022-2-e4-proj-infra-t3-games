@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
-import cod from '../../assets/img/cod.jpg';
+interface IBackground {
+    readonly image: string;
+}
 
-export const Background = styled.div`
-    background-image: url(${cod});
+export const Background = styled.div<IBackground>`
+    background-image: url(${({ image }) => image});
     height: 1160px;
     position: absolute;
     left: 0;

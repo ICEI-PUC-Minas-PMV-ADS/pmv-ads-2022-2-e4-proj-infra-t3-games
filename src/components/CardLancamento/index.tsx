@@ -1,12 +1,16 @@
-import { GameImage, GameTitle, ResgateButton, StyledDiv } from './style';
-import gameImage from '../../assets/img/game-image.png';
+import { GameImage, GameTitle, StyledDiv } from './style';
 
-const CardLancamento = () => {
+interface ICardLancamento {
+    nome: string;
+    url_imagem: string;
+    id: string;
+}
+
+const CardLancamento = ({ nome, url_imagem }: ICardLancamento) => {
     return (
         <StyledDiv>
-            <GameImage src={gameImage} />
-            <GameTitle>title</GameTitle>
-            <ResgateButton>Resgatar</ResgateButton>
+            <GameImage src={url_imagem} />
+            <GameTitle>{nome}</GameTitle>
         </StyledDiv>
     );
 };

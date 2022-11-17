@@ -1,5 +1,5 @@
 import CardDestaques from '../../components/CardDestaques';
-import { ResgateButton } from '../../components/CardLancamento/style';
+import { ResgateButton } from '../../components/GamesCarousel/style';
 import FooterBanner from '../../components/FooterBanner';
 import GamesCarousel from '../../components/GamesCarousel';
 import MainGameBg from '../../components/MainGameBg';
@@ -20,6 +20,7 @@ import {
 import destaque1 from '../../assets/img/destaque-1.png';
 import destaque2 from '../../assets/img/destaque-2.png';
 import destaque3 from '../../assets/img/destaque-3.png';
+import cod from '../../assets/img/cod.jpg';
 import CardGamePreco from '../../components/CardGamePreco';
 import SectionTitle from '../../components/SectionTitle';
 import { useAuthContext } from '../../contexts/AuthContext';
@@ -29,20 +30,25 @@ const items = [
     { name: 'Cadastre-se', link: '/cadastro' },
 ];
 
-
 const Loja = () => {
     const { isAuthenticated, logout } = useAuthContext();
     const items2 = [
-        {name: 'Logout', link: '/login', onClick() {logout()}},
-        { name: 'Cadastrar Game', link: '/cadastrogame' }
+        {
+            name: 'Logout',
+            link: '/login',
+            onClick() {
+                logout();
+            },
+        },
+        { name: 'Cadastrar Game', link: '/cadastrogame' },
     ];
 
     return (
         <div style={{ paddingBottom: '40px' }}>
-            <MainGameBg />
+            <MainGameBg image={cod} />
 
-            {isAuthenticated? <Navbar items={items2} /> : <Navbar items={items} />}
-            
+            {isAuthenticated ? <Navbar items={items2} /> : <Navbar items={items} />}
+
             <Main>
                 <MainGameGroup>
                     <MainGameDescription>
@@ -55,9 +61,9 @@ const Loja = () => {
                 </MainGameGroup>
                 <LancamentosGroup>
                     <LancamentosTitle>
-                        <LancamentosText>Novos</LancamentosText>
+                        <LancamentosText>Resgate</LancamentosText>
                         <LancamentosSeparator></LancamentosSeparator>
-                        <LancamentosText>Lançamentos</LancamentosText>
+                        <LancamentosText>agora</LancamentosText>
                     </LancamentosTitle>
                     <GamesCarousel />
                 </LancamentosGroup>
