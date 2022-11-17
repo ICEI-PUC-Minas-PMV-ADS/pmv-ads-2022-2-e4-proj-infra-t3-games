@@ -14,11 +14,11 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-app.get('/games/:game_id', async (req, res) => {
-    const game_id = req.params.game_id;
+app.get('/games/:id', async (req, res) => {
+    const id = req.params.id;
     const game = await prisma.games.findUniqueOrThrow({
         where: {
-            game_id,
+            id,
         },
     });
     return res.status(200).json(game);

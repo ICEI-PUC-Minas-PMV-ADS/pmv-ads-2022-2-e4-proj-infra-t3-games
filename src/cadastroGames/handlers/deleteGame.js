@@ -14,12 +14,12 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-app.delete('/games/:game_id', async (req, res) => {
-    const game_id = req.params.game_id;
+app.delete('/games/:id', async (req, res) => {
+    const id = req.params.id;
 
     const remove = await prisma.games.delete({
         where: {
-            game_id,
+            id,
         },
     });
     res.status(204).send(remove);
