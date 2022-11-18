@@ -13,7 +13,7 @@ export const schemaCadastro = yup.object({
         .required('Digite uma senha')
         .matches(
             /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^])[A-Za-z\d@$!%*?&#^]{8,}$/,
-            'A senha deve ter no mínimo 8 caracteres sendo uma letra maiúscula, uma minúscula, um número e um caractere especial',
+            'A senha deve ter no mínimo 8 caracteres (1 letra maiúscula, 1 minúscula, 1 número e 1 símbolo)',
         ),
     confirm: yup
         .string()
@@ -33,12 +33,5 @@ export const schemaLogin = yup.object({
 });
 
 export const schemaCode = yup.object({
-    email: yup
-        .string()
-        .required('Digite seu e-mail')
-        .matches(
-            /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
-            'Email inválido',
-        ),
     code: yup.string().required('Digite o código de validação'),
 });
