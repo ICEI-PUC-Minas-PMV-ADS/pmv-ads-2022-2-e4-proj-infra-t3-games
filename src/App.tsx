@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Loja from './pages/Loja';
 import CadastroGame from './pages/CadastroGame';
 import Game from './pages/Game';
+import Biblioteca from './pages/Biblioteca';
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                     <Route path='/code' element={<ValidarCode />} />
                     <Route path='/loja' element={<Loja />} />
                     <Route path='/loja/game/:id' element={<Game />} />
+                    <Route path='/biblioteca' element={<Biblioteca />} />
                     <Route path='/cadastrogame' element={<CadastroGame />} />
                 </Routes>
             </Router>
