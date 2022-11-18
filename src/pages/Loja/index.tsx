@@ -24,31 +24,29 @@ import cod from '../../assets/img/cod.jpg';
 import CardGamePreco from '../../components/CardGamePreco';
 import SectionTitle from '../../components/SectionTitle';
 import { useAuthContext } from '../../contexts/AuthContext';
-
-const items = [
-    { name: 'Iniciar Sessão', link: '/login' },
-    { name: 'Cadastre-se', link: '/cadastro' },
-];
+import NavbarLink from '../../components/Navbar/NavbarLink';
 
 const Loja = () => {
     const { isAuthenticated, logout } = useAuthContext();
-    const items2 = [
-        {
-            name: 'Logout',
-            link: '/login',
-            onClick() {
-                logout();
-            },
-        },
-        { name: 'Cadastrar Game', link: '/cadastrogame' },
-    ];
 
     return (
         <div style={{ paddingBottom: '40px' }}>
             <MainGameBg image={cod} />
-
-            {isAuthenticated ? <Navbar items={items2} /> : <Navbar items={items} />}
-
+            <Navbar>
+                {isAuthenticated ? (
+                    <>
+                        <NavbarLink onClick={logout} to={'/login'}>
+                            Logout
+                        </NavbarLink>
+                        <NavbarLink to={'/cadastrogame'}>Cadastrar Game</NavbarLink>
+                    </>
+                ) : (
+                    <>
+                        <NavbarLink to={'/login'}>Iniciar Sessão</NavbarLink>
+                        <NavbarLink to={'/cadastro'}>Cadastre-se</NavbarLink>
+                    </>
+                )}
+            </Navbar>
             <Main>
                 <MainGameGroup>
                     <MainGameDescription>

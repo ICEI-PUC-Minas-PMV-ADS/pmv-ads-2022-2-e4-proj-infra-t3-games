@@ -32,11 +32,9 @@ export const StyledInput = styled.input`
 `;
 
 export const ErrorMessage = styled.span`
-    position: absolute;
     color: #d00c23;
     font-family: 'Inter';
     font-size: 16px;
-    bottom: -25px;
-    left: 50%;
-    transform: translateX(-50%);
+    text-align: center;
+    height: 12px;
 `;

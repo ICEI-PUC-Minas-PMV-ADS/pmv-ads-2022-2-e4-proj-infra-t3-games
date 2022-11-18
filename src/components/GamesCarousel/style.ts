@@ -4,6 +4,7 @@ import { SwiperSlide } from 'swiper/react';
 export const CarouselContainer = styled.div`
     max-width: 1064px;
     margin: 0 auto;
+    height: 308px;
 `;
 
 export const StyledSwiperSlide = styled(SwiperSlide)`

@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Nav = styled.nav`
@@ -16,13 +15,4 @@ export const Ul = styled.ul`
     align-items: center;
     justify-content: flex-end;
     gap: 30px;
-`;
-
-export const StyledLink = styled(Link)`
-    text-decoration: none;
-    color: #ffffff;
-    padding: 16px 37px;
-    border: 1px solid #8257e6;
-    border-radius: 4px;
-    text-align: center;
 `;

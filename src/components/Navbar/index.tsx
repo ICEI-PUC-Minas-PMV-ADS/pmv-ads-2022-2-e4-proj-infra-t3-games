@@ -1,26 +1,13 @@
 import React from 'react';
-import { Nav, Ul, StyledLink } from './style';
-
-type NavbarItems = {
-    name: string;
-    link: string;
-    onClick?: () => void
-};
-
+import { Nav, Ul } from './style';
 interface Props {
-    items: Array<NavbarItems>;
+    children: React.ReactNode;
 }
 
-const Navbar = ({ items, ...props }: Props) => {
+const Navbar = ({ children }: Props) => {
     return (
         <Nav>
-            <Ul>
-                {items.map((item) => (
-                    <li key={item.name} onClick={item.onClick}>
-                        <StyledLink to={item.link}>{item.name}</StyledLink>
-                    </li>
-                ))}
-            </Ul>
+            <Ul>{children}</Ul>
         </Nav>
     );
 };

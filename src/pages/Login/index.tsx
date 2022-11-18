@@ -11,12 +11,11 @@ import Form from '../../components/Form';
 import Footer from '../../components/Footer';
 import { schemaLogin } from '../../utils/yupSchema';
 import { useNavigate } from 'react-router-dom';
+import NavbarLink from '../../components/Navbar/NavbarLink';
 interface FormData {
     email: string;
     password: string;
 }
-
-const items = [{ name: 'Home', link: '/' },{ name: 'Cadastre-se', link: '/cadastro' }];
 
 const Login = () => {
     const {
@@ -28,11 +27,11 @@ const Login = () => {
     });
 
     const navigate = useNavigate();
-    
+
     const onSubmit = (data: FormData) => {
         const userPool = new CognitoUserPool({
             UserPoolId: `${process.env.REACT_APP_USER_POOL_ID}`,
-            ClientId:`${process.env.REACT_APP_CLIENT_ID}`,
+            ClientId: `${process.env.REACT_APP_CLIENT_ID}`,
         });
         const authenticationDetails = new AuthenticationDetails({
             Username: data.email,
@@ -45,11 +44,11 @@ const Login = () => {
                 let authenticate = {
                     token: result.getIdToken().getJwtToken(),
                     userName: data.email,
-                    time: new Date().getTime()
-                }
+                    time: new Date().getTime(),
+                };
                 localStorage.setItem('authenticate', JSON.stringify(authenticate));
-                localStorage.setItem('token',result.getIdToken().getJwtToken())
-                navigate("/loja")
+                localStorage.setItem('token', result.getIdToken().getJwtToken());
+                navigate('/loja');
                 window.location.reload();
             },
             onFailure: function (result) {
@@ -61,7 +60,10 @@ const Login = () => {
     return (
         <Grid>
             <header>
-                <Navbar items={items} />
+                <Navbar>
+                    <NavbarLink to='/'>Home</NavbarLink>
+                    <NavbarLink to='/cadastro'>Cadastre-se</NavbarLink>
+                </Navbar>
             </header>
             <Title>Login</Title>
             <Form onSubmit={handleSubmit(onSubmit)}>

@@ -10,16 +10,12 @@ import Footer from '../../components/Footer';
 import Form from '../../components/Form';
 import Grid from '../../components/Grid';
 import { schemaCode } from '../../utils/yupSchema';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import NavbarLink from '../../components/Navbar/NavbarLink';
+import { useEffect, useState } from 'react';
 interface FormData {
-    email: string;
     code: string;
 }
-
-const items = [
-    { name: 'Iniciar Sessão', link: '/login' },
-    { name: 'Cadastre-se', link: '/' },
-];
 
 const ValidarCode = () => {
     const {
@@ -31,41 +27,49 @@ const ValidarCode = () => {
     });
 
     const navigate = useNavigate();
+    const location = useLocation();
+    const [email, setEmail] = useState(location.state);
+
+    const userPool = new CognitoUserPool({
+        UserPoolId: `${process.env.REACT_APP_USER_POOL_ID}`,
+        ClientId: `${process.env.REACT_APP_CLIENT_ID}`,
+    });
+
+    const userData = { Username: email, Pool: userPool };
 
     const onSubmit = (data: FormData) => {
-        const userPool = new CognitoUserPool({
-            UserPoolId: `${process.env.REACT_APP_USER_POOL_ID}`,
-            ClientId: `${process.env.REACT_APP_CLIENT_ID}`,
-        });
-
-        const userData = { Username: data.email, Pool: userPool };
         new CognitoUser(userData).confirmRegistration(data.code, true, function (err) {
             if (err) {
                 alert(err);
                 return;
             }
-            navigate("/login");
+            navigate('/login');
+            setEmail(undefined);
         });
     };
+
+    useEffect(() => {
+        if (!email) {
+            return navigate('/cadastro');
+        }
+    }, [email, navigate]);
 
     return (
         <Grid>
             <header>
-                <Navbar items={items} />
+                <Navbar>
+                    <NavbarLink to={'/login'}>Iniciar Sessão</NavbarLink>
+                    <NavbarLink to={'/cadastro'}>Cadastre-se</NavbarLink>
+                </Navbar>
             </header>
             <Title>Confirmação de código</Title>
             <Form onSubmit={handleSubmit(onSubmit)}>
-                <Input
-                    placeholder='E-mail'
-                    type='email'
-                    {...register('email')}
-                    error={errors.email?.message}
-                />
                 <Input
                     placeholder='Código'
                     type='string'
                     {...register('code')}
                     error={errors.code?.message}
+                    autoComplete='off'
                 />
                 <Button type='submit'>Confirmar</Button>
             </Form>

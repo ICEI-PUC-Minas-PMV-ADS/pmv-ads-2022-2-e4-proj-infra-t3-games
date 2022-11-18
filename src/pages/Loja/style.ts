@@ -51,7 +51,8 @@ export const CardGameGroup = styled.div`
 `;
 
 export const CardGameGrid = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 8px;
 `;

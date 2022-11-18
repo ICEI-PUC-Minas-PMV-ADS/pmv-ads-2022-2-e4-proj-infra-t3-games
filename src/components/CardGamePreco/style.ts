@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const CardWrapper = styled.div`
-    width: 506px;
+    flex: 0 1 506px;
     height: 220px;
     padding: 10px 16px;
     display: flex;

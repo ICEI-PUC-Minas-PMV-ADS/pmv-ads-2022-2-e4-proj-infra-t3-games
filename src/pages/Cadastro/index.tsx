@@ -11,6 +11,7 @@ import Footer from '../../components/Footer';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schemaCadastro } from '../../utils/yupSchema';
 import { useNavigate } from 'react-router-dom';
+import NavbarLink from '../../components/Navbar/NavbarLink';
 
 interface FormData {
     email: string;
@@ -18,12 +19,10 @@ interface FormData {
     confirm: string;
 }
 
-const items = [{ name: 'Iniciar Sessão', link: '/login' }, { name: 'Validar Código', link: '/code' }];
-
 const Cadastro = () => {
     const {
         register,
-        getValues,
+
         handleSubmit,
         formState: { errors },
     } = useForm<FormData>({
@@ -31,7 +30,7 @@ const Cadastro = () => {
     });
 
     const navigate = useNavigate();
-    
+
     const onSubmit = (data: FormData) => {
         const userPool = new CognitoUserPool({
             UserPoolId: `${process.env.REACT_APP_USER_POOL_ID}`,
@@ -41,14 +40,17 @@ const Cadastro = () => {
             if (err) {
                 console.error(err);
             }
-            navigate("/code");
+            navigate('/code', { state: data.email });
         });
     };
 
     return (
         <Grid>
             <header>
-                <Navbar items={items} />
+                <Navbar>
+                    <NavbarLink to={'/login'}>Iniciar Sessão</NavbarLink>
+                    <NavbarLink to={'/code'}>Validar Código</NavbarLink>
+                </Navbar>
             </header>
             <Title>Cadastre-se</Title>
             <Form onSubmit={handleSubmit(onSubmit)}>

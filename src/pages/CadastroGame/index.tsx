@@ -10,6 +10,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { GamesService } from '../../services/games/GameService';
 import Navbar from '../../components/Navbar';
+import NavbarLink from '../../components/Navbar/NavbarLink';
 
 interface FormData {
     nome: string;
@@ -29,8 +30,6 @@ const schema = yup.object({
     quantidade: yup.number().integer().min(1, 'mínimo 1').max(1000, 'máximo 1000'),
 });
 
-const items = [{ name: 'Home', link: '/' }];
-
 const CadastroGame = () => {
     const {
         register,
@@ -42,14 +41,16 @@ const CadastroGame = () => {
 
     const onSubmit = (data: FormData) => {
         GamesService.cadastrar(data).then((res) => {
-            alert(res)
+            alert(res);
         });
     };
 
     return (
         <Grid>
             <header>
-                <Navbar items={items} />
+                <Navbar>
+                    <NavbarLink to='/'>Home</NavbarLink>
+                </Navbar>
             </header>
             <Title>Cadastre seu Game</Title>
             <Form onSubmit={handleSubmit(onSubmit)}>
@@ -71,19 +72,19 @@ const CadastroGame = () => {
                     {...register('url_imagem')}
                     error={errors.url_imagem?.message}
                 />
-                 <Input
+                <Input
                     placeholder='image HD Url'
                     type='text'
                     {...register('url_fullImagem')}
                     error={errors.url_fullImagem?.message}
                 />
-                 <Input
+                <Input
                     placeholder='genero'
                     type='text'
                     {...register('genero')}
                     error={errors.genero?.message}
                 />
-                 <Input
+                <Input
                     placeholder='quantidade'
                     type='number'
                     {...register('quantidade')}

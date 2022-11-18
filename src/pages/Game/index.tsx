@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import Button from '../../components/Button';
 import Navbar from '../../components/Navbar';
+import NavbarLink from '../../components/Navbar/NavbarLink';
 import { useAuthContext } from '../../contexts/AuthContext';
 import { Main } from '../Loja/style';
 import { GameImage, Description, GameWrapper, GameName } from './style';
@@ -17,23 +18,24 @@ interface IGame {
 const Game = () => {
     const game = useLocation().state as IGame;
     const { isAuthenticated, logout } = useAuthContext();
-    const items = [
-        { name: 'Iniciar Sessão', link: '/login' },
-        { name: 'Cadastre-se', link: '/cadastro' },
-    ];
-    const items2 = [
-        {
-            name: 'Logout',
-            link: '/login',
-            onClick() {
-                logout();
-            },
-        },
-        { name: 'Cadastrar Game', link: '/cadastrogame' },
-    ];
     return (
         <div style={{ paddingBottom: '40px' }}>
-            {isAuthenticated ? <Navbar items={items2} /> : <Navbar items={items} />}
+            <Navbar>
+                {isAuthenticated ? (
+                    <>
+                        <NavbarLink onClick={logout} to={'/login'}>
+                            Logout
+                        </NavbarLink>
+                        <NavbarLink to={'/cadastrogame'}>Cadastrar Game</NavbarLink>
+                    </>
+                ) : (
+                    <>
+                        <NavbarLink to={'/login'}>Iniciar Sessão</NavbarLink>
+                        <NavbarLink to={'/cadastro'}>Cadastre-se</NavbarLink>
+                    </>
+                )}
+            </Navbar>
+
             <Main>
                 <GameWrapper>
                     <GameName>{game.nome}</GameName>
