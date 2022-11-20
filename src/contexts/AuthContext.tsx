@@ -1,5 +1,4 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { runInThisContext } from 'vm';
 
 interface IAuthContextData {
   logout: () => void;

@@ -7,6 +7,7 @@ import axios from 'axios';
 import CardLancamento from '../CardLancamento';
 import { CarouselContainer, StyledSwiperSlide, ResgateButton } from './style';
 import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../../contexts/AuthContext';
 
 export interface IGame {
     id: string;
@@ -20,6 +21,7 @@ export interface IGame {
 
 const GamesCarousel = () => {
     const [games, setGames] = useState<IGame[]>([]);
+    const { isAuthenticated } = useAuthContext();
 
     useEffect(() => {
         axios('https://870u95h2tb.execute-api.us-east-1.amazonaws.com/dev/games').then((response) =>
@@ -30,9 +32,12 @@ const GamesCarousel = () => {
     const navigate = useNavigate();
 
     const handleOpenGame = ({ id, url_imagem, nome, url_fullImagem, descricao, genero }: IGame) => {
-        navigate(`/loja/game/${id}`, {
-            state: { id, url_imagem, nome, url_fullImagem, descricao, genero },
-        });
+        if(!isAuthenticated) {navigate('/login')} 
+        else {
+            navigate(`/loja/game/${id}`, {
+                state: { id, url_imagem, nome, url_fullImagem, descricao, genero },
+            });
+        }
     };
 
     return (
