@@ -8,9 +8,9 @@ import Footer from '../../components/Footer';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { GamesService } from '../../services/games/GameService';
 import Navbar from '../../components/Navbar';
 import NavbarLink from '../../components/Navbar/NavbarLink';
+import { Api } from '../../services/AxiosConfig/ApiConfig';
 
 interface FormData {
     nome: string;
@@ -40,9 +40,10 @@ const CadastroGame = () => {
     });
 
     const onSubmit = (data: FormData) => {
-        GamesService.cadastrar(data).then((res) => {
-            alert(res);
-        });
+        Api().post('/games', data).then((res) => {
+            console.log(res)
+            alert('Game criado com sucesso!')
+        })
     };
 
     return (
