@@ -31,7 +31,7 @@ const Loja = () => {
 
     return (
         <div style={{ paddingBottom: '40px' }}>
-            <MainGameBg image={cod} />
+            <MainGameBg height='1160px' image={cod} />
             <Navbar>
                 {isAuthenticated ? (
                     <>
