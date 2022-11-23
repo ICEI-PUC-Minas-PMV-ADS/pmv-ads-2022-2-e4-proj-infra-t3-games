@@ -35,10 +35,11 @@ const Loja = () => {
             <Navbar>
                 {isAuthenticated ? (
                     <>
+                        <NavbarLink to={'/cadastrogame'}>Cadastrar Game</NavbarLink>
+                        <NavbarLink to={'/biblioteca'}>Biblioteca</NavbarLink>
                         <NavbarLink onClick={logout} to={'/login'}>
                             Logout
                         </NavbarLink>
-                        <NavbarLink to={'/cadastrogame'}>Cadastrar Game</NavbarLink>
                     </>
                 ) : (
                     <>

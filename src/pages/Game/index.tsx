@@ -24,8 +24,7 @@ const Game = () => {
     const handleResgate = () => {
         const obj = {user_email: user, game_id: game.id}
         Api().post('/resgates', JSON.stringify(obj)).then((res) => {
-            console.log(res)
-            alert("Resgate realizado com sucesso!")
+            alert(res.data)
         });
     };
 
