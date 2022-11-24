@@ -4,9 +4,8 @@ import {THEME} from '../../theme';
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
     },
-    scrollview: {alignItems: 'center'},
+    scrollview: {alignItems: 'center', flex: 1, paddingHorizontal: 32},
     header: {
         width: '100%',
         flexDirection: 'row',
@@ -16,8 +15,11 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     logo: {
-        width: 80,
-        height: 80,
+        maxWidth: 120,
+        maxHeight: 120,
+        marginTop: 54,
+        marginBottom: 28,
+        alignSelf: 'center',
     },
     right: {
         width: 20,
@@ -61,7 +63,7 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 16,
+        marginTop: 32,
     },
     buttonTitle: {
         color: THEME.COLORS.TEXT,

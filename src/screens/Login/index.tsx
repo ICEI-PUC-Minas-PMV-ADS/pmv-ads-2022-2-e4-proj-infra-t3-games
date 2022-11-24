@@ -8,12 +8,13 @@ import {
     CognitoUserPool,
 } from 'amazon-cognito-identity-js';
 
-import {ScrollView, TouchableOpacity, Text} from 'react-native';
+import {ScrollView, TouchableOpacity, Text, Image} from 'react-native';
 import React, {useState} from 'react';
 import {Input} from '../../components/Input';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
-
+import {Heading} from '../../components/Heading';
+import logoImg from '../../assets/logowhite.png';
 interface IAuthenticationDetails {
     Username: string;
     Password: string;
@@ -62,6 +63,8 @@ export function Login() {
     return (
         <Background>
             <SafeAreaView style={styles.container}>
+                <Image source={logoImg} style={styles.logo} />
+                <Heading title='Login' subtitle='Faça o login para continuar' />
                 <ScrollView contentContainerStyle={styles.scrollview}>
                     <Input
                         label='Usuário'
@@ -72,13 +75,15 @@ export function Login() {
                         label='Senha'
                         placeholder='123456'
                         onChangeText={(value: string) => setSenha(value)}
+                        secureTextEntry
                     />
                     <TouchableOpacity
+                        style={styles.button}
                         onPress={() => {
                             handleLogin();
                         }}
                     >
-                        <Text>Logar</Text>
+                        <Text style={styles.buttonTitle}>Logar</Text>
                     </TouchableOpacity>
                 </ScrollView>
             </SafeAreaView>
