@@ -8,25 +8,27 @@ import {
     CognitoUserPool,
 } from 'amazon-cognito-identity-js';
 
-import {ScrollView, TouchableOpacity} from 'react-native';
-
+import {ScrollView, TouchableOpacity, Text} from 'react-native';
 import React, {useState} from 'react';
 import {Input} from '../../components/Input';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useNavigation} from '@react-navigation/native';
 
 interface IAuthenticationDetails {
     Username: string;
     Password: string;
 }
 
-export function Game() {
+export function Login() {
     const [email, setEmail] = useState<string>('');
     const [senha, setSenha] = useState<string>('');
 
+    const navigation = useNavigation();
+
     const handleLogin = () => {
         const userPool = new CognitoUserPool({
-            UserPoolId: `${process.env.REACT_APP_USER_POOL_ID}`,
-            ClientId: `${process.env.REACT_APP_CLIENT_ID}`,
+            UserPoolId: `us-east-1_ZRiDg99ZZ`,
+            ClientId: `2clk64ln5ueapqfdrudg2ui639`,
         });
         const authenticationDetails = new AuthenticationDetails({
             Username: email,
@@ -41,7 +43,7 @@ export function Game() {
                     userName: email,
                     time: new Date().getTime(),
                 };
-                localStorage.setItem(
+                AsyncStorage.setItem(
                     'authenticate',
                     JSON.stringify(authenticate),
                 );
@@ -49,6 +51,7 @@ export function Game() {
                     'token',
                     result.getIdToken().getJwtToken(),
                 );
+                navigation.navigate('home');
             },
             onFailure: function (result) {
                 alert(result);
@@ -74,7 +77,9 @@ export function Game() {
                         onPress={() => {
                             handleLogin();
                         }}
-                    ></TouchableOpacity>
+                    >
+                        <Text>Logar</Text>
+                    </TouchableOpacity>
                 </ScrollView>
             </SafeAreaView>
         </Background>

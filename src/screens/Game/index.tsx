@@ -35,7 +35,9 @@ export function Game() {
                 game_id: game.id,
             });
             Alert.alert('Sucesso!', 'Seu jogo foi resgatado.');
-        } catch (error) {}
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (

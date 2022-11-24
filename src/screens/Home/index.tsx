@@ -64,13 +64,13 @@ export function Home() {
                         showsHorizontalScrollIndicator={false}
                         contentContainerStyle={styles.contentList}
                     />
-                    <CreateAdBanner
+                    {/* <CreateAdBanner
                         togglePress={() => setOpenCreateAdModal(true)}
                     />
                     <CreateAdModal
                         visible={openCreateAdModal}
                         onClose={() => setOpenCreateAdModal(false)}
-                    />
+                    /> */}
                 </ScrollView>
             </SafeAreaView>
         </Background>
