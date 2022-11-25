@@ -5,6 +5,7 @@ import {Game} from '../screens/Game';
 import {Login} from '../screens/Login';
 import {Cadastro} from '../screens/Cadastro';
 import {Code} from '../screens/Code';
+import {Biblioteca} from '../screens/Biblioteca';
 import {useEffect, useState} from 'react';
 import {Auth, Hub} from 'aws-amplify';
 import {View} from 'react-native';
@@ -56,6 +57,7 @@ export function AppRoutes() {
                 <>
                     <Screen name='home' component={Home} />
                     <Screen name='game' component={Game} />
+                    <Screen name='biblioteca' component={Biblioteca} />
                 </>
             ) : (
                 <>

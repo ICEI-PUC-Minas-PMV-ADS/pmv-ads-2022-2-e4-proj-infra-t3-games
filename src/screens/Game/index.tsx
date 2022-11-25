@@ -15,14 +15,13 @@ import {Entypo} from '@expo/vector-icons';
 import {THEME} from '../../theme';
 import logoImg from '../../assets/logowhite.png';
 import {Heading} from '../../components/Heading';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import axios from 'axios';
 
 export function Game() {
     const navigation = useNavigation();
     const route = useRoute();
     const game = route.params as GameParams;
-    // const { user, isAuthenticated, logout } = useAuthContext();
 
     const handleGoBack = () => {
         navigation.goBack();
@@ -30,10 +29,18 @@ export function Game() {
 
     const handleResgate = async () => {
         try {
-            await axios.post('/resgates', {
-                user_email: 'jeanss122@gmail.com',
-                game_id: game.id,
-            });
+            await axios.post(
+                'https://870u95h2tb.execute-api.us-east-1.amazonaws.com/dev/resgates',
+                {
+                    user_email: game.userEmail,
+                    game_id: game.id,
+                },
+                {
+                    headers: {
+                        Authorization: game.token,
+                    },
+                },
+            );
             Alert.alert('Sucesso!', 'Seu jogo foi resgatado.');
         } catch (error) {
             console.log(error);

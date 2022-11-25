@@ -11,10 +11,6 @@ import {useNavigation} from '@react-navigation/native';
 import {Heading} from '../../components/Heading';
 import logoImg from '../../assets/logowhite.png';
 import {Auth} from 'aws-amplify';
-interface IAuthenticationDetails {
-    Username: string;
-    Password: string;
-}
 
 export function Cadastro() {
     const [email, setEmail] = useState<string>('');
@@ -66,7 +62,7 @@ export function Cadastro() {
                         }}
                     >
                         <Text style={styles.buttonTitle}>
-                            {carregando ? 'Carreganno...' : 'Cadastrar'}
+                            {carregando ? 'Carregando...' : 'Cadastrar'}
                         </Text>
                     </TouchableOpacity>
                     <Heading
@@ -77,7 +73,7 @@ export function Cadastro() {
                     <TouchableOpacity
                         style={styles.buttonCode}
                         onPress={() => {
-                            navigation.navigate('login');
+                            navigation.navigate('login', {});
                         }}
                     >
                         <Text style={styles.buttonTitleCode}>

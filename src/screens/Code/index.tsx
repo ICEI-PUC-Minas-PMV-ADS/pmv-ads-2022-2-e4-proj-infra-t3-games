@@ -13,10 +13,6 @@ import logoImg from '../../assets/logowhite.png';
 import {Auth} from 'aws-amplify';
 import {RouteProp} from '@react-navigation/native';
 
-interface IAuthenticationDetails {
-    Username: string;
-    Password: string;
-}
 type RouteParams = {
     Code: {
         email: string;
@@ -38,14 +34,14 @@ export function Code() {
         setCarregando(true);
         try {
             await Auth.confirmSignUp(email, codigo);
-            navigation.navigate('login');
+            navigation.navigate('login', {});
         } catch (error: any) {
             Alert.alert('Opa', error.message);
         }
         setCarregando(false);
     };
 
-    const handleResend = async (codigo: string) => {
+    const handleResend = async (email: string) => {
         if (carregando) {
             return;
         }

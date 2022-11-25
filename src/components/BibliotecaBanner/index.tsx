@@ -1,4 +1,4 @@
-import {MagnifyingGlassPlus} from 'phosphor-react-native';
+import {GameController, MagnifyingGlassPlus} from 'phosphor-react-native';
 import React, {useEffect, useState} from 'react';
 import {
     View,
@@ -14,16 +14,14 @@ interface Props extends TouchableOpacityProps {
     togglePress: () => void;
 }
 
-export function CreateAdBanner({togglePress}: Props) {
+export function BibliotecaBanner({togglePress}: Props) {
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Não encontrou seu duo?</Text>
-            <Text style={styles.subtitle}>
-                Publique um anúncio para encontrar novos players
-            </Text>
+            <Text style={styles.title}>Acesse a biblioteca</Text>
+            <Text style={styles.subtitle}>Sua coleção de jogos está aqui</Text>
             <TouchableOpacity style={styles.button} onPress={togglePress}>
-                <MagnifyingGlassPlus size={24} color={THEME.COLORS.TEXT} />
-                <Text style={styles.buttonTitle}>Publicar anúncio</Text>
+                <GameController size={24} color={THEME.COLORS.TEXT} />
+                <Text style={styles.buttonTitle}>Biblioteca</Text>
             </TouchableOpacity>
         </View>
     );

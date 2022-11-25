@@ -2,16 +2,10 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 
 import {Background} from '../../components/Background';
 import {styles} from './styles';
-import {
-    AuthenticationDetails,
-    CognitoUser,
-    CognitoUserPool,
-} from 'amazon-cognito-identity-js';
 
 import {ScrollView, TouchableOpacity, Text, Image, Alert} from 'react-native';
 import React, {useState} from 'react';
 import {Input} from '../../components/Input';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
 import {Heading} from '../../components/Heading';
 import logoImg from '../../assets/logowhite.png';
@@ -33,10 +27,8 @@ export function Login() {
         }
         setCarregando(true);
         try {
-            const response = await Auth.signIn(email, senha);
-            console.log(response);
-
-            navigation.navigate('home', {email});
+            await Auth.signIn(email, senha);
+            navigation.navigate('login', {screen: 'home', params: {email}});
         } catch (error: any) {
             Alert.alert('Opa', error.message);
         }
@@ -82,7 +74,7 @@ export function Login() {
                     <TouchableOpacity
                         style={styles.buttonCode}
                         onPress={() => {
-                            navigation.navigate('login');
+                            navigation.navigate('cadastro');
                         }}
                     >
                         <Text style={styles.buttonTitleCode}>

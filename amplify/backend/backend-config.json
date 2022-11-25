@@ -1,6 +1,6 @@
 {
   "auth": {
-    "gamespuc31f752f9": {
+    "gamespuc48dfc4f0": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],

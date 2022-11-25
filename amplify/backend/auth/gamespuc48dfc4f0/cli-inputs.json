@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "gamespuc31f752f9_identitypool_31f752f9",
+    "identityPoolName": "gamespuc48dfc4f0_identitypool_48dfc4f0",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "gamesp31f752f9",
-    "userPoolName": "gamespuc31f752f9_userpool_31f752f9",
+    "resourceNameTruncated": "gamesp48dfc4f0",
+    "userPoolName": "gamespuc48dfc4f0_userpool_48dfc4f0",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -31,10 +31,10 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "gamesp31f752f9_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "gamesp48dfc4f0_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "31f752f9",
-    "resourceName": "gamespuc31f752f9",
+    "sharedId": "48dfc4f0",
+    "resourceName": "gamespuc48dfc4f0",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "default",
     "usernameAttributes": [

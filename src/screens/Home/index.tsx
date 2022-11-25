@@ -1,8 +1,7 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     Image,
     FlatList,
-    View,
     ScrollView,
     TouchableOpacity,
     Text,
@@ -15,13 +14,13 @@ import {GameCard, GameCardProps} from '../../components/GameCard';
 import {Heading} from '../../components/Heading';
 
 import {styles} from './styles';
-import {CreateAdBanner} from '../../components/CreateAdBanner';
-import {CreateAdModal} from '../../components/CreateAdModal';
 import {Auth} from 'aws-amplify';
+import {BibliotecaBanner} from '../../components/BibliotecaBanner';
 
 export function Home() {
     const [games, setGames] = useState<GameCardProps[]>([]);
-    const [openCreateAdModal, setOpenCreateAdModal] = useState<boolean>(false);
+    const [userEmail, setUserEmail] = useState('');
+    const [token, setToken] = useState('');
 
     const navigation = useNavigation();
 
@@ -42,6 +41,8 @@ export function Home() {
             nome,
             url_fullImagem,
             genero,
+            token,
+            userEmail,
         });
     };
 
@@ -51,6 +52,17 @@ export function Home() {
         )
             .then((response) => response.json())
             .then((data) => setGames(data));
+    }, []);
+
+    useEffect(() => {
+        Auth.currentSession().then((response) => {
+            let accessToken = response.getAccessToken();
+            let jwt = accessToken.getJwtToken();
+            let idToken = response.getIdToken();
+            let email = idToken.payload.email;
+            setToken(jwt);
+            setUserEmail(email);
+        });
     }, []);
 
     return (
@@ -84,13 +96,14 @@ export function Home() {
                         showsHorizontalScrollIndicator={false}
                         contentContainerStyle={styles.contentList}
                     />
-                    {/* <CreateAdBanner
-                        togglePress={() => setOpenCreateAdModal(true)}
+                    <BibliotecaBanner
+                        togglePress={() =>
+                            navigation.navigate('biblioteca', {
+                                userEmail,
+                                token,
+                            })
+                        }
                     />
-                    <CreateAdModal
-                        visible={openCreateAdModal}
-                        onClose={() => setOpenCreateAdModal(false)}
-                    /> */}
                 </ScrollView>
             </SafeAreaView>
         </Background>

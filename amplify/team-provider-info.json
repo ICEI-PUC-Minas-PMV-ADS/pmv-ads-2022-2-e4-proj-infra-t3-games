@@ -1,19 +1,19 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-gamespuc-dev-204718-authRole",
-      "UnauthRoleArn": "arn:aws:iam::253169446386:role/amplify-gamespuc-dev-204718-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::253169446386:role/amplify-gamespuc-dev-204718-authRole",
+      "AuthRoleName": "amplify-gamespuc-dev-124249-authRole",
+      "UnauthRoleArn": "arn:aws:iam::872002700925:role/amplify-gamespuc-dev-124249-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::872002700925:role/amplify-gamespuc-dev-124249-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-gamespuc-dev-204718-deployment",
-      "UnauthRoleName": "amplify-gamespuc-dev-204718-unauthRole",
-      "StackName": "amplify-gamespuc-dev-204718",
-      "StackId": "arn:aws:cloudformation:us-east-1:253169446386:stack/amplify-gamespuc-dev-204718/567798f0-6c52-11ed-ac16-0a223df9116b",
-      "AmplifyAppId": "dlk9c1e1eaqca"
+      "DeploymentBucketName": "amplify-gamespuc-dev-124249-deployment",
+      "UnauthRoleName": "amplify-gamespuc-dev-124249-unauthRole",
+      "StackName": "amplify-gamespuc-dev-124249",
+      "StackId": "arn:aws:cloudformation:us-east-1:872002700925:stack/amplify-gamespuc-dev-124249/d21cbaa0-6cd7-11ed-9669-1225f763f3b5",
+      "AmplifyAppId": "d102p6zds5k0ti"
     },
     "categories": {
       "auth": {
-        "gamespuc31f752f9": {}
+        "gamespuc48dfc4f0": {}
       }
     }
   }
