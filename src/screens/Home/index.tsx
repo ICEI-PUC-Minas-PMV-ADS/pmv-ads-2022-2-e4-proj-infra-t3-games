@@ -1,5 +1,12 @@
 import {useEffect, useState} from 'react';
-import {Image, FlatList, View, ScrollView} from 'react-native';
+import {
+    Image,
+    FlatList,
+    View,
+    ScrollView,
+    TouchableOpacity,
+    Text,
+} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useNavigation} from '@react-navigation/native';
 import logoImg from '../../assets/logowhite.png';
@@ -10,12 +17,17 @@ import {Heading} from '../../components/Heading';
 import {styles} from './styles';
 import {CreateAdBanner} from '../../components/CreateAdBanner';
 import {CreateAdModal} from '../../components/CreateAdModal';
+import {Auth} from 'aws-amplify';
 
 export function Home() {
     const [games, setGames] = useState<GameCardProps[]>([]);
     const [openCreateAdModal, setOpenCreateAdModal] = useState<boolean>(false);
 
     const navigation = useNavigation();
+
+    const handleLogout = async () => {
+        Auth.signOut();
+    };
 
     const handleOpenGame = ({
         id,
@@ -45,6 +57,14 @@ export function Home() {
         <Background>
             <SafeAreaView style={styles.container}>
                 <ScrollView contentContainerStyle={styles.scrollview}>
+                    <TouchableOpacity
+                        style={styles.button}
+                        onPress={() => {
+                            handleLogout();
+                        }}
+                    >
+                        <Text style={styles.buttonTitle}>Logout</Text>
+                    </TouchableOpacity>
                     <Image source={logoImg} style={styles.logo} />
                     <Heading
                         title='Resgate agora!'

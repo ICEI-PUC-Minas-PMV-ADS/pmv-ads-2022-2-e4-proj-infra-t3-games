@@ -7,31 +7,51 @@ import {ScrollView, TouchableOpacity, Text, Image, Alert} from 'react-native';
 import React, {useState} from 'react';
 import {Input} from '../../components/Input';
 
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import {Heading} from '../../components/Heading';
 import logoImg from '../../assets/logowhite.png';
 import {Auth} from 'aws-amplify';
+import {RouteProp} from '@react-navigation/native';
+
 interface IAuthenticationDetails {
     Username: string;
     Password: string;
 }
+type RouteParams = {
+    Code: {
+        email: string;
+    };
+};
 
-export function Cadastro() {
-    const [email, setEmail] = useState<string>('');
-    const [senha, setSenha] = useState<string>('');
+export function Code() {
+    const route = useRoute<RouteProp<RouteParams, 'Code'>>();
+    const [codigo, setCodigo] = useState<string>('');
+    const [email, setEmail] = useState(route?.params?.email);
     const [carregando, setCarregando] = useState(false);
 
     const navigation = useNavigation();
 
-    const handleCadastro = async (email: string, senha: string) => {
+    const handleConfirmar = async (codigo: string) => {
         if (carregando) {
             return;
         }
         setCarregando(true);
         try {
-            await Auth.signUp(email, senha);
+            await Auth.confirmSignUp(email, codigo);
+            navigation.navigate('login');
+        } catch (error: any) {
+            Alert.alert('Opa', error.message);
+        }
+        setCarregando(false);
+    };
 
-            navigation.navigate('code', {email});
+    const handleResend = async (codigo: string) => {
+        if (carregando) {
+            return;
+        }
+        setCarregando(true);
+        try {
+            await Auth.resendSignUp(email);
         } catch (error: any) {
             Alert.alert('Opa', error.message);
         }
@@ -45,43 +65,38 @@ export function Cadastro() {
                 <ScrollView contentContainerStyle={styles.scrollview}>
                     <Heading
                         style={styles.heading}
-                        title='Cadastro'
-                        subtitle='Faça seu cadastro e comece a resgatar os jogos'
+                        title='Confirmar conta'
+                        subtitle='Insira o código enviado para o seu e-mail'
                     />
                     <Input
-                        label='Usuário'
-                        placeholder='Usuário'
+                        label='Email'
+                        placeholder='Email'
                         onChangeText={(value: string) => setEmail(value)}
+                        value={email}
                     />
                     <Input
-                        label='Senha'
-                        placeholder='Senha'
-                        onChangeText={(value: string) => setSenha(value)}
-                        secureTextEntry
+                        label='Código'
+                        placeholder='Código'
+                        onChangeText={(value: string) => setCodigo(value)}
                     />
                     <TouchableOpacity
                         style={styles.button}
                         onPress={() => {
-                            handleCadastro(email, senha);
+                            handleConfirmar(codigo);
                         }}
                     >
                         <Text style={styles.buttonTitle}>
-                            {carregando ? 'Carreganno...' : 'Cadastrar'}
+                            {carregando ? 'Carregando...' : 'Enviar'}
                         </Text>
                     </TouchableOpacity>
-                    <Heading
-                        style={styles.heading}
-                        title='Já possuí login?'
-                        subtitle='Toque no botão abaixo para realizar o login'
-                    />
                     <TouchableOpacity
                         style={styles.buttonCode}
                         onPress={() => {
-                            navigation.navigate('login');
+                            handleResend(email);
                         }}
                     >
                         <Text style={styles.buttonTitleCode}>
-                            {carregando ? 'Carregando...' : 'Login'}
+                            {carregando ? 'Carregando...' : 'Reenviar código'}
                         </Text>
                     </TouchableOpacity>
                 </ScrollView>

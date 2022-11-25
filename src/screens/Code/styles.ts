@@ -74,6 +74,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         marginTop: 32,
     },
+
     buttonTitle: {
         color: THEME.COLORS.TEXT,
         fontFamily: THEME.FONT_FAMILY.SEMI_BOLD,
@@ -88,7 +89,7 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 12,
+        marginTop: 32,
     },
     buttonTitleCode: {
         color: THEME.COLORS.PRIMARY,

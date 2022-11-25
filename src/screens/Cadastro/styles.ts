@@ -5,7 +5,12 @@ export const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    scrollview: {alignItems: 'center', flex: 1, paddingHorizontal: 32},
+    scrollview: {
+        alignItems: 'center',
+
+        paddingHorizontal: 32,
+        paddingBottom: 32,
+    },
     header: {
         width: '100%',
         flexDirection: 'row',
@@ -13,6 +18,11 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 32,
         marginTop: 28,
         justifyContent: 'space-between',
+    },
+    heading: {
+        marginTop: 32,
+        marginBottom: 22,
+        width: '100%',
     },
     logo: {
         maxWidth: 120,
@@ -67,6 +77,22 @@ export const styles = StyleSheet.create({
     },
     buttonTitle: {
         color: THEME.COLORS.TEXT,
+        fontFamily: THEME.FONT_FAMILY.SEMI_BOLD,
+        fontSize: THEME.FONT_SIZE.MD,
+    },
+    buttonCode: {
+        width: 200,
+        height: 60,
+        paddingHorizontal: 32,
+        borderRadius: 6,
+        backgroundColor: THEME.COLORS.TEXT,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 12,
+    },
+    buttonTitleCode: {
+        color: THEME.COLORS.PRIMARY,
         fontFamily: THEME.FONT_FAMILY.SEMI_BOLD,
         fontSize: THEME.FONT_SIZE.MD,
     },
