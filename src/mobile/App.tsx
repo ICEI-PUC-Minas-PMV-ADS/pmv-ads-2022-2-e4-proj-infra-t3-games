@@ -14,9 +14,6 @@ import {Loading} from './src/components/Loading';
 import {Amplify} from 'aws-amplify';
 
 import awsconfig from './src/aws-exports';
-import {THEME} from './src/theme';
-import backgroundImg from './src/assets/background.jpg';
-import {pink100} from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 
 Amplify.configure(awsconfig);
 
