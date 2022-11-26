@@ -39,53 +39,6 @@ const signUpConfig = {
     ],
 };
 
-// const customTheme = {
-//     ...AmplifyTheme,
-//     container: {
-//         ...AmplifyTheme.container,
-//         flexDirection: 'row',
-//         backgroundColor: '',
-//     },
-//     section: {
-//         ...AmplifyTheme.section,
-//         paddingHorizontal: 32,
-//     },
-//     button: {
-//         ...AmplifyTheme.button,
-//         backgroundColor: THEME.COLORS.PRIMARY,
-//         borderRadius: 6,
-//         width: 200,
-//         alignSelf: 'center',
-//     },
-//     buttonDisabled: {
-//         ...AmplifyTheme.buttonDisabled,
-//         backgroundColor: THEME.COLORS.PRIMARY,
-//         borderRadius: 6,
-//         width: 200,
-//         alignSelf: 'center',
-//         opacity: 0.5,
-//     },
-//     sectionFooterLink: {
-//         ...AmplifyTheme.sectionFooterLink,
-//         color: THEME.COLORS.CAPTION_500,
-//     },
-//     inputLabel: {
-//         ...AmplifyTheme.inputLabel,
-//         marginBottom: 8,
-//         fontSize: THEME.FONT_SIZE.MD,
-//     },
-//     input: {
-//         ...AmplifyTheme.input,
-//         backgroundColor: THEME.COLORS.CAPTION_300,
-//         color: THEME.COLORS.BACKGROUND_900,
-//         paddingVertical: 12,
-//         paddingHorizontal: 16,
-//         marginBottom: 8,
-//         borderRadius: 6,
-//         fontSize: THEME.FONT_SIZE.MD,
-//     },
-// };
-
 const App: any = () => {
     const [fontsLoaded] = useFonts({
         Inter_400Regular,
