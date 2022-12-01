@@ -25,9 +25,9 @@ interface IResgates {
 }
 
 const Biblioteca = () => {
-    const { isAuthenticated, logout } = useAuthContext();
+    const { logout } = useAuthContext();
     const local = JSON.parse(localStorage.getItem('authenticate') || '');
-    const [dados, setDados] = useState<IUserProps>(local);
+    const [dados] = useState<IUserProps>(local);
     const [resgates, setResgates] = useState<IResgates[]>([]);
 
     useEffect(() => {
