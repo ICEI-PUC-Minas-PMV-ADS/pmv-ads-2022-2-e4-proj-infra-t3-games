@@ -29,19 +29,20 @@ export function Game() {
 
     const handleResgate = async () => {
         try {
-            await axios.post(
-                'https://870u95h2tb.execute-api.us-east-1.amazonaws.com/dev/resgates',
-                {
-                    user_email: game.userEmail,
-                    game_id: game.id,
-                },
-                {
-                    headers: {
-                        Authorization: game.token,
+            await axios
+                .post(
+                    'https://870u95h2tb.execute-api.us-east-1.amazonaws.com/dev/resgates',
+                    {
+                        user_email: game.userEmail,
+                        game_id: game.id,
                     },
-                },
-            );
-            Alert.alert('Sucesso!', 'Seu jogo foi resgatado.');
+                    {
+                        headers: {
+                            Authorization: game.token,
+                        },
+                    },
+                )
+                .then((response) => Alert.alert('', response.data));
         } catch (error) {
             console.log(error);
         }
