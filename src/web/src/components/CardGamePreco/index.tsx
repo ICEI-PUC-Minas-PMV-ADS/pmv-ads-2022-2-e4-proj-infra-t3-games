@@ -1,17 +1,26 @@
-import { CardWrapper, GameDescription, GameImage, GameInfoGroup, GameTitle } from './style';
+import {
+    CardWrapper,
+    GameDescription,
+    GameImage,
+    GameInfoGroup,
+    GameTitle,
+} from './style';
 
 import gameImage from '../../assets/img/game-image.png';
 
-const CardGamePreco = () => {
+interface ICardGamePreco {
+    image: string;
+    title: string;
+    description: string;
+}
+
+const CardGamePreco = ({image, title, description}: ICardGamePreco) => {
     return (
         <CardWrapper>
-            <GameImage src={gameImage} />
+            <GameImage src={image} />
             <GameInfoGroup>
-                <GameTitle>Titulo Game</GameTitle>
-                <GameDescription>
-                    Economize até 80% em jogos de corrida, incluindo Riders Republic, The Crew 2 e
-                    Steep. Termina em 11 de agosto.
-                </GameDescription>
+                <GameTitle>{title}</GameTitle>
+                <GameDescription>{description}</GameDescription>
             </GameInfoGroup>
         </CardWrapper>
     );
